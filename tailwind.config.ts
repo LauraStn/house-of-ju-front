@@ -2,16 +2,18 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      backgroundImage: {
+        'home-hands': "url('/images/woman-hands.webp')",
+        'home-flower': "url('/images/flowers.jpg')"
       },
+      fontFamily:{
+        'laBelleAurore': ['var(--font-la-belle-aurore)'],
+        'jimNightshade': ['var(--font-jim_nightshade)']
+      }
     },
   },
   plugins: [],

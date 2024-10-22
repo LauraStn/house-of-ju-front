@@ -1,10 +1,11 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Jim_Nightshade,La_Belle_Aurore } from "next/font/google";
+import { Arima, Jim_Nightshade,La_Belle_Aurore } from "next/font/google";
 
 import Footer from "@/component/footer/Footer";
 import Header from "@/component/header/Header";
+import { ToastContainer } from "react-toastify";
 
 
 export const metadata: Metadata = {
@@ -24,6 +25,12 @@ export const laBelleAurore = La_Belle_Aurore({
   variable: '--font-la-belle-aurore'
 })
 
+export const arima = Arima({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-arima'
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,9 +39,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-    className={`${jim_Nightshade.variable} ${laBelleAurore.variable}`}
+    className={`${jim_Nightshade.variable} ${laBelleAurore.variable} ${arima.variable} font-arima`}
       >
         <Header/>
+        <ToastContainer
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            />
         {children}
         <Footer/>
       </body>

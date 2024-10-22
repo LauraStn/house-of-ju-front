@@ -12,7 +12,8 @@ const config: Config = {
       },
       fontFamily:{
         'laBelleAurore': ['var(--font-la-belle-aurore)'],
-        'jimNightshade': ['var(--font-jim_nightshade)']
+        'jimNightshade': ['var(--font-jim_nightshade)'],
+        'arima': ['var(--font-arima)']
       }
     },
   },

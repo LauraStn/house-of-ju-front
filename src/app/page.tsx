@@ -118,7 +118,7 @@ export default function Home() {
             <div className={classNames(" w-60 text-center flex flex-col gap-12")}>
               <p className={classNames("text-[#781b1b] text-xl mx-3")}>Connectez-vous à votre espace client pour gérer vos rendez-vous.</p>
               <div className="border py-[10px] border-[#FFBCB2]">
-                <a href="" className={classNames("uppercase text-lg text-white bg-[#FFBCB2] w-full py-2 px-10")}>Connectez vous</a>
+                <a href="/login" className={classNames("uppercase text-lg text-white bg-[#FFBCB2] w-full py-1 px-10")}>Connectez vous</a>
               </div>
             </div>  
           </div>
@@ -127,7 +127,7 @@ export default function Home() {
            
         </div>  
       </div>
-      <div className="flex flex-col items-center gap-4 text-center bg-[#FFF2F0] py-10">
+      {/* <div className="flex flex-col items-center gap-4 text-center bg-[#FFF2F0] py-10">
           <Image
           src={"/images/logojs.png"}
           alt=""
@@ -143,7 +143,7 @@ export default function Home() {
           <p className="text-[#FFA79A] capitalize">Mardi, mercredi, jeudi, vendredi, samedi 9h - 18h<br/>Lundi et dimanche fermé</p>
           <hr className="h-0.5 lg:w-1/4 w-3/4 bg-[#FFBCB2]"></hr>
           <div className="flex text-2xl gap-2 mb-4 text-[#FE6A6A]"><a target="blank" href="https://www.instagram.com/houseofju22/"><FaInstagram/></a> <a target="blank" href="https://www.facebook.com/julia.dijoux.507"><FaFacebook /></a></div>
-        </div>
+        </div> */}
        
     </div>
   );

@@ -1,46 +1,49 @@
-'use client'
-// import { laBelleAurore } from '@/app/layout'
-// import classNames from 'classnames'
-import React, { useEffect, useState } from 'react'
-
-import { getAllNailServices } from '@/services/nailService'
+'use client';
+import React from 'react';
+import Image, {StaticImageData} from 'next/image';
 
 export type NailServiceProps = {
-    id:number
-    name: string
-    description: string
-    duration: number
-    price: number
-}
+  id: number;
+  name: string;
+  description: string;
+  duration: number;
+  price: number;
+};
 
-const NailServiceCard = () => {
-    const [nailServiceList, setNailServiceList] = useState<NailServiceProps[]>([])
-    useEffect(() => {
-        getAllNailServices().then((res) => {
-            setNailServiceList(res)
-          })
-          .catch((e) => {
-            return e;
-          });
-      }, []);
-console.log(nailServiceList);
-
+const NailServiceCard = (
+  props: NailServiceProps & {
+    image: StaticImageData;
+    reverse: boolean;
+  }
+) => {
   return (
-    <>
-        {nailServiceList && nailServiceList?.map((item) => {
-            return (
-                <div key={item.id}>
-                    {/* <h2 className={classNames("text-[#FE6A6A] text-3xl", laBelleAurore.className)}>{item.name}</h2> */}
-                    <p>{item.description}</p>
-                    <p>{item.price}</p>
-                    <p>{item.duration}</p>
-                </div>
-            )
-        })
+    <div
+      key={props.id}
+      className={`m-5 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-10 md:mx-24 rounded-md justify-around items-center flex flex-col lg:flex-row ${
+        props.reverse ? 'lg:flex-row-reverse' : ''
+      }`}
+    >
+      <div className='gap-8 flex flex-col lg:w-96'>
+        <h2 className='text-[#FE6A6A] font-jimNightshade uppercase text-3xl'>
+          {props.name}
+        </h2>
+        <p className='text-[#FE6A6A]'>Durée: {props.duration} min</p>
+        <p className='text-[#FFA79A]'>{props.description}</p>
+        <p className='text-[#FE6A6A] text-right text-xl'>
+          Prix: {props.price}€
+        </p>
+      </div>
+      <div className='self-center lg:self-auto'>
+        <Image
+          src={props.image.src}
+          alt=''
+          width={props.image.width}
+          height={props.image.height}
+          className='w-60 rounded-full'
+        />
+      </div>
+    </div>
+  );
+};
 
-        }
-    </>
-  )
-}
-
-export default NailServiceCard
+export default NailServiceCard;

@@ -1,23 +1,29 @@
+import classNames from 'classnames';
+import {usePathname, useSearchParams} from 'next/navigation';
+import React, {Fragment, useEffect, useState} from 'react';
+
 import {NailServiceProps} from '@/component/card/NailServiceCard';
+import DeleteServiceForm from '@/component/form/DeleteServiceForm';
+import EditServiceForm from '@/component/form/EditServiceForm';
+import Modal from '@/component/modals/Modal';
 import {useIsMobile} from '@/hook/useIsMobile';
 import {getAllNailServices} from '@/services/nailService';
-import React, {Fragment, useEffect, useState} from 'react';
-import NailServiceRow from './NailServiceRow';
-import HouseOfJu from '@/component/houseOfJu/HouseOfJu';
+
 import NailServiceMobileCard from './NailServiceMobileCard';
-import {DiVim} from 'react-icons/di';
-import classNames from 'classnames';
-import {isTaggedTemplateExpression} from 'typescript';
+import NailServiceRow from './NailServiceRow';
 
 const NailServiceAdmin = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);
+  const [nailServiceList, setNailServiceList] = useState<NailServiceProps[]>(
+    []
+  );
+  const params = useSearchParams();
+  const pathName = usePathname();
 
   const toggleTableVisibility = () => {
     setIsTableVisible((prev) => !prev);
   };
-  const [nailServiceList, setNailServiceList] = useState<NailServiceProps[]>(
-    []
-  );
+
   useEffect(() => {
     getAllNailServices()
       .then((res) => {
@@ -35,7 +41,7 @@ const NailServiceAdmin = () => {
         <div>
           <div className='flex flex-col gap-4 mx-5 my-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-8 rounded-lg'>
             <div className='flex flex-col gap-6 pb-5'>
-              <h2 className='text-4xl font-jimNightshade uppercase text-[#FE6A6A]'>
+              <h2 className='text-3xl font-jimNightshade uppercase text-[#FE6A6A]'>
                 Gestion des Prestations
               </h2>
               <button
@@ -57,8 +63,8 @@ const NailServiceAdmin = () => {
                 }
               )}
             >
-              <button className='ml-2 self-start py-2 bg-[#FE6A6A] w-24 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
-                Créer
+              <button className='ml-2 self-start py-2 bg-[#FE6A6A] w-48 mb-4 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                Ajouter une prestation
               </button>
               {nailServiceList &&
                 nailServiceList?.map((item) => (
@@ -69,6 +75,8 @@ const NailServiceAdmin = () => {
                       description={item.description}
                       duration={item.duration}
                       price={item.price}
+                      params={params}
+                      pathName={pathName}
                     />
                   </Fragment>
                 ))}
@@ -79,7 +87,7 @@ const NailServiceAdmin = () => {
         <div>
           <div className='flex flex-col gap-4 mx-5 my-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-8 rounded-lg'>
             <div className='flex justify-between'>
-              <h2 className='text-4xl font-jimNightshade uppercase text-[#FE6A6A]'>
+              <h2 className='text-3xl font-jimNightshade uppercase text-[#FE6A6A]'>
                 Gestion des Prestations
               </h2>
               <div className='flex flex-col items-end gap-4'>
@@ -94,6 +102,9 @@ const NailServiceAdmin = () => {
                 </p>
               </div>
             </div>
+            {/* <Modal>
+        <div></div>
+        </Modal>{' '} */}
             <div
               className={classNames(
                 'transition-max-height overflow-hidden duration-500',
@@ -103,8 +114,8 @@ const NailServiceAdmin = () => {
                 }
               )}
             >
-              <button className='self-start py-2 bg-[#FE6A6A] w-24 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
-                Créer
+              <button className='self-start py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                Ajouter une prestation
               </button>
               <table className='w-full sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5'>
                 <thead className='bg-[#FFBCB2] text-white'>
@@ -126,6 +137,8 @@ const NailServiceAdmin = () => {
                           description={item.description}
                           duration={item.duration}
                           price={item.price}
+                          params={params}
+                          pathName={pathName}
                         />
                       </Fragment>
                     ))}
@@ -135,6 +148,14 @@ const NailServiceAdmin = () => {
           </div>
         </div>
       )}
+      <Modal isOpen={params.size > 0}>
+        {params.has('delete') && <DeleteServiceForm />}
+        {params.has('edit') && (
+          <EditServiceForm
+            nailService={nailServiceList}
+            id={Number(params.get('edit'))} pathName={pathName}/>
+        )}
+      </Modal>
     </>
   );
 };

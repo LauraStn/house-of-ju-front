@@ -1,14 +1,16 @@
+import axios, {AxiosResponse} from 'axios';
 
-import { AuthProps } from "@/component/Input";
-import axios, { AxiosResponse } from "axios";
+import {AuthProps} from '@/component/Input';
 
-type Response<T> = AxiosResponse<T>
-export async function registerUser(user: AuthProps):Promise<AxiosResponse<{message: string}>> {
+type Response<T> = AxiosResponse<T>;
+export async function registerUser(
+  user: AuthProps
+): Promise<AxiosResponse<{message: string}>> {
   const url = `${process.env.NEXT_PUBLIC_API_URL}auth/signup`;
 
   const axiosConfig = {
     headers: {
-      "content-type": "application/json",
+      'content-type': 'application/json',
     },
   };
   return axios
@@ -21,12 +23,14 @@ export async function registerUser(user: AuthProps):Promise<AxiosResponse<{messa
     });
 }
 
-export async function loginUser(user: Pick<AuthProps,"email" |"password">):Promise<Response<{token: string, role_id: number}>> {
+export async function loginUser(
+  user: Pick<AuthProps, 'email' | 'password'>
+): Promise<Response<{token: string; role_id: number}>> {
   const url = `${process.env.NEXT_PUBLIC_API_URL}auth/signin`;
 
   const axiosConfig = {
     headers: {
-      "content-type": "application/json",
+      'content-type': 'application/json',
     },
   };
   return axios

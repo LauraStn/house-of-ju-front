@@ -1,10 +1,11 @@
+import {Arima} from 'next/font/google';
 import Image from 'next/image';
 import React, {Fragment} from 'react';
-import Input, {AuthProps} from '../Input';
-import {useForm, SubmitHandler} from 'react-hook-form';
+import {SubmitHandler, useForm} from 'react-hook-form';
+
 import {registerUser} from '@/services/authService';
-import {Arima} from 'next/font/google';
-import {toast} from 'react-toastify';
+
+import Input, {AuthProps} from '../Input';
 
 export type FormFields = {
   type: string;
@@ -22,7 +23,6 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: {errors},
   } = useForm<AuthProps>();
 
@@ -33,11 +33,11 @@ const RegisterForm = () => {
       if (res.status === 201) {
         // toast.success(res.data.message)
       } else {
-        console.log(res);
+        console.log(errors);
+
         // toast.error(res.data.message)
       }
     });
-  // .catch((e) => toast.error(e));
 
   const formFields: FormFields[] = [
     {

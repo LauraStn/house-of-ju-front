@@ -1,9 +1,10 @@
 'use client';
-import NailServiceAdmin from '@/component/admin/NailService/NailServiceTable';
-import Image from 'next/image';
 import React from 'react';
 
-const page = () => {
+import GalleryAdmin from '@/component/admin/gallery/GalleryAdmin';
+import NailServiceAdmin from '@/component/admin/NailService/NailServiceTable';
+
+export default function Admin () {
   return (
     <div>
       <div className='bg-admin bg-cover bg-no-repeat h-[300px] flex justify-center py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>
@@ -14,8 +15,12 @@ const page = () => {
         </div>
       </div>
       <NailServiceAdmin />
+      <GalleryAdmin/>
     </div>
   );
-};
+}
+// const page = () => {
+  
+// };
 
-export default page;
+// export default page;

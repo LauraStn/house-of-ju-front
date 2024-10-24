@@ -1,6 +1,6 @@
 'use client';
-import React from 'react';
 import Image, {StaticImageData} from 'next/image';
+import React from 'react';
 
 export type NailServiceProps = {
   id: number;

@@ -12,7 +12,7 @@ const Header = () => {
         className='h-20 w-20'
       />
       <nav>
-        <ul className='flex gap-8 items-center'>
+        <ul className='flex flex-wrap gap-8 items-center'>
           <li>
             <a href='/login'>Login</a>
           </li>

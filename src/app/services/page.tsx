@@ -1,5 +1,12 @@
 'use client';
+import Image from 'next/image';
 import React, {Fragment, useEffect, useState} from 'react';
+
+import NailServiceCard, {
+  NailServiceProps,
+} from '@/component/card/NailServiceCard';
+import {getAllNailServices} from '@/services/nailService';
+
 import ongle1 from '../../../public/images/ongle1.webp';
 import ongle2 from '../../../public/images/ongle2.webp';
 import ongle3 from '../../../public/images/ongle3.webp';
@@ -7,13 +14,7 @@ import ongle4 from '../../../public/images/ongle4.webp';
 import ongle5 from '../../../public/images/ongle5.webp';
 import ongle6 from '../../../public/images/ongle6.webp';
 
-import NailServiceCard, {
-  NailServiceProps,
-} from '@/component/card/NailServiceCard';
-import Image from 'next/image';
-import {getAllNailServices} from '@/services/nailService';
-
-const page = () => {
+export default function Services() {
   const [nailServiceList, setNailServiceList] = useState<NailServiceProps[]>(
     []
   );
@@ -62,6 +63,4 @@ const page = () => {
       </div>
     </div>
   );
-};
-
-export default page;
+}

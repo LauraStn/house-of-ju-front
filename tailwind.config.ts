@@ -17,8 +17,15 @@ const config: Config = {
         jimNightshade: ['var(--font-jim_nightshade)'],
         arima: ['var(--font-arima)'],
       },
+      colors: {
+        'bittersweet': '#FE6A6A',
+        'melon': '#FFBCB2',
+        'mona-lisa':'#FFA79A',
+        'chardon': '#FFF2F0',
+        'persian-plum': '#781b1b',
+      },
       transitionProperty: {
-        height: 'height',
+        'height': 'height',
         'max-height': 'max-height',
       },
       transitionTimingFunction: {

@@ -1,8 +1,9 @@
-import ImageGalleryCard from '@/component/card/ImageGalleryCard';
 import Image from 'next/image';
 import React from 'react';
 
-const page = () => {
+import ImageGalleryCard from '@/component/card/ImageGalleryCard';
+
+export default function Gallery () {
   return (
     <div>
       <div className='bg-gallery-flowers md:flex md:justify-center md:items-center bg-no-repeat bg-cover h-[300px] py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>
@@ -24,15 +25,12 @@ const page = () => {
           Ongles des mains
         </h3>
         <div className='flex flex-wrap md:flex-row items-center gap-10 flex-col'>
-          <ImageGalleryCard />
-          <ImageGalleryCard />
-          <ImageGalleryCard />
-          <ImageGalleryCard />
-          <ImageGalleryCard />
+          <ImageGalleryCard id={0} image_url={''} />
+          <ImageGalleryCard id={0} image_url={''} />
+          <ImageGalleryCard id={0} image_url={''} />
+          <ImageGalleryCard id={0} image_url={''} />
         </div>
       </div>
     </div>
   );
 };
-
-export default page;

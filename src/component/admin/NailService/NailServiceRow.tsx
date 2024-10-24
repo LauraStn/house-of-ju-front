@@ -1,9 +1,15 @@
-import {NailServiceProps} from '@/component/card/NailServiceCard';
+import Link from 'next/link';
+import { ReadonlyURLSearchParams } from 'next/navigation';
 import React, {useState} from 'react';
 import {BsFillTrash3Fill} from 'react-icons/bs';
 import {FaPencilAlt} from 'react-icons/fa';
 
-const NailServiceRow = (props: NailServiceProps) => {
+import {NailServiceProps} from '@/component/card/NailServiceCard';
+
+const NailServiceRow = (props: NailServiceProps& {
+  pathName: string,
+  params: ReadonlyURLSearchParams
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -36,7 +42,9 @@ const NailServiceRow = (props: NailServiceProps) => {
         </td>
         <td className='border-[#FFF2F0] border w-24 p-3 sm:text-left text-red-400 cursor-pointer'>
           <div className='flex justify-around'>
-            <BsFillTrash3Fill />
+          <Link href={`${props.pathName}?delete=${props.id}`}>
+                <BsFillTrash3Fill className='hover:text-red-500' />
+              </Link>
             <FaPencilAlt />
           </div>
         </td>

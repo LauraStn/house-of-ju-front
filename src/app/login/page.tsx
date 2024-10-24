@@ -1,7 +1,8 @@
-import LoginForm from '@/component/form/LoginForm'
 import React from 'react'
 
-const page = () => {
+import LoginForm from '@/component/form/LoginForm'
+
+export default function Login () {
   return (
     <div>
       <LoginForm/>
@@ -9,4 +10,3 @@ const page = () => {
   )
 }
 
-export default page

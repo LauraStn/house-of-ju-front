@@ -2,10 +2,10 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Arima, Jim_Nightshade,La_Belle_Aurore } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 
 import Footer from "@/component/footer/Footer";
 import Header from "@/component/header/Header";
-import { ToastContainer } from "react-toastify";
 
 
 export const metadata: Metadata = {

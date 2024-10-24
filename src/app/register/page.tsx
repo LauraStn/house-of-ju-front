@@ -1,8 +1,9 @@
 "use client"
-import RegisterForm from '@/component/form/RegisterForm'
 import React from 'react'
 
-const page = () => {
+import RegisterForm from '@/component/form/RegisterForm'
+
+export default function Register () {
   return (
     <div>
       <RegisterForm/>
@@ -10,4 +11,3 @@ const page = () => {
   )
 }
 
-export default page

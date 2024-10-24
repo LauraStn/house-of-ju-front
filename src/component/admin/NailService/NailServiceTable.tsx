@@ -1,21 +1,29 @@
+import classNames from 'classnames';
+import {usePathname, useSearchParams} from 'next/navigation';
+import React, {Fragment, useEffect, useState} from 'react';
+
 import {NailServiceProps} from '@/component/card/NailServiceCard';
+import DeleteServiceForm from '@/component/form/DeleteServiceForm';
+import EditServiceForm from '@/component/form/EditServiceForm';
+import Modal from '@/component/modals/Modal';
 import {useIsMobile} from '@/hook/useIsMobile';
 import {getAllNailServices} from '@/services/nailService';
-import React, {Fragment, useEffect, useState} from 'react';
-import NailServiceRow from './NailServiceRow';
-import HouseOfJu from '@/component/houseOfJu/HouseOfJu';
+
 import NailServiceMobileCard from './NailServiceMobileCard';
-import {DiVim} from 'react-icons/di';
+import NailServiceRow from './NailServiceRow';
 
 const NailServiceAdmin = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);
+  const [nailServiceList, setNailServiceList] = useState<NailServiceProps[]>(
+    []
+  );
+  const params = useSearchParams();
+  const pathName = usePathname();
 
   const toggleTableVisibility = () => {
     setIsTableVisible((prev) => !prev);
   };
-  const [nailServiceList, setNailServiceList] = useState<NailServiceProps[]>(
-    []
-  );
+
   useEffect(() => {
     getAllNailServices()
       .then((res) => {
@@ -32,8 +40,8 @@ const NailServiceAdmin = () => {
       {isMobile ? (
         <div>
           <div className='flex flex-col gap-4 mx-5 my-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-8 rounded-lg'>
-            <div className='flex flex-col gap-6'>
-              <h2 className='text-4xl font-jimNightshade uppercase text-[#FE6A6A]'>
+            <div className='flex flex-col gap-6 pb-5'>
+              <h2 className='text-3xl font-jimNightshade uppercase text-[#FE6A6A]'>
                 Gestion des Prestations
               </h2>
               <button
@@ -46,29 +54,40 @@ const NailServiceAdmin = () => {
                 Cliquez pour afficher/masquer les prestations
               </p>
             </div>
-            {isTableVisible && (
-              <div>
-                {nailServiceList &&
-                  nailServiceList?.map((item) => (
-                    <Fragment key={item.id}>
-                      <NailServiceMobileCard
-                        id={item.id}
-                        name={item.name}
-                        description={item.description}
-                        duration={item.duration}
-                        price={item.price}
-                      />
-                    </Fragment>
-                  ))}
-              </div>
-            )}
+            <div
+              className={classNames(
+                'transition-max-height overflow-hidden duration-500',
+                {
+                  'max-h-0 ease-out-expo': !isTableVisible,
+                  'h-auto max-h-[1000px]': isTableVisible,
+                }
+              )}
+            >
+              <button className='ml-2 self-start py-2 bg-[#FE6A6A] w-48 mb-4 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                Ajouter une prestation
+              </button>
+              {nailServiceList &&
+                nailServiceList?.map((item) => (
+                  <Fragment key={item.id}>
+                    <NailServiceMobileCard
+                      id={item.id}
+                      name={item.name}
+                      description={item.description}
+                      duration={item.duration}
+                      price={item.price}
+                      params={params}
+                      pathName={pathName}
+                    />
+                  </Fragment>
+                ))}
+            </div>
           </div>
         </div>
       ) : (
         <div>
           <div className='flex flex-col gap-4 mx-5 my-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-8 rounded-lg'>
             <div className='flex justify-between'>
-              <h2 className='text-4xl font-jimNightshade uppercase text-[#FE6A6A]'>
+              <h2 className='text-3xl font-jimNightshade uppercase text-[#FE6A6A]'>
                 Gestion des Prestations
               </h2>
               <div className='flex flex-col items-end gap-4'>
@@ -83,7 +102,21 @@ const NailServiceAdmin = () => {
                 </p>
               </div>
             </div>
-            {isTableVisible && (
+            {/* <Modal>
+        <div></div>
+        </Modal>{' '} */}
+            <div
+              className={classNames(
+                'transition-max-height overflow-hidden duration-500',
+                {
+                  'max-h-0 ease-out-expo': !isTableVisible,
+                  'h-auto max-h-[1000px]': isTableVisible,
+                }
+              )}
+            >
+              <button className='self-start py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                Ajouter une prestation
+              </button>
               <table className='w-full sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5'>
                 <thead className='bg-[#FFBCB2] text-white'>
                   <tr className='sm:table-row hidden'>
@@ -104,15 +137,25 @@ const NailServiceAdmin = () => {
                           description={item.description}
                           duration={item.duration}
                           price={item.price}
+                          params={params}
+                          pathName={pathName}
                         />
                       </Fragment>
                     ))}
                 </tbody>
               </table>
-            )}
+            </div>
           </div>
         </div>
       )}
+      <Modal isOpen={params.size > 0}>
+        {params.has('delete') && <DeleteServiceForm />}
+        {params.has('edit') && (
+          <EditServiceForm
+            nailService={nailServiceList}
+            id={Number(params.get('edit'))} pathName={pathName}/>
+        )}
+      </Modal>
     </>
   );
 };

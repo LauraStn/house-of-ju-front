@@ -1,30 +1,32 @@
 'use client';
 import Image from 'next/image';
 import React, {Fragment} from 'react';
-import {FormFields} from './RegisterForm';
-import Input, {AuthProps} from '../Input';
-import {loginUser} from '@/services/authService';
-import {useForm, SubmitHandler} from 'react-hook-form';
+import {SubmitHandler,useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
+
+import {loginUser} from '@/services/authService';
+
+import Input, {AuthProps} from '../Input';
+import {FormFields} from './RegisterForm';
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: {errors},
   } = useForm<AuthProps>();
 
   const onSubmit: SubmitHandler<Pick<AuthProps, 'email' | 'password'>> = (
     data
   ) =>
-    loginUser(data).then((res: any) => {
+    loginUser(data).then((res) => {
       if (res.status === 201) {
         toast.success('Login successfull');
-        window.localStorage.setItem('token', res.data.token.access_token);
-        window.localStorage.setItem('role', res.data.role);
+        // window.localStorage.setItem('token', res.data.token.access_token);
+        // window.localStorage.setItem('role', res.data.role);
       } else {
-        // toast.error(res.response.data.message);
+        console.log(errors);
+        
       }
     });
   // .catch((e) => toast.error(e));

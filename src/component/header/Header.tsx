@@ -3,7 +3,7 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header className='bg-[#FFBCB2] flex justify-between'>
+    <header className='bg-[#FFBCB2] text-white flex items-center justify-between'>
       <Image
         src={'/images/logojs.png'}
         alt=''
@@ -12,7 +12,7 @@ const Header = () => {
         className='h-20 w-20'
       />
       <nav>
-        <ul>
+        <ul className='flex flex-wrap gap-8 items-center'>
           <li>
             <a href='/login'>Login</a>
           </li>
@@ -24,6 +24,12 @@ const Header = () => {
           </li>
           <li>
             <a href='/admin'>Admin</a>
+          </li>
+          <li>
+            <a href='/gallery'>Galerie</a>
+          </li>
+          <li>
+            <a href='/services'>Beauté des ongles</a>
           </li>
         </ul>
       </nav>

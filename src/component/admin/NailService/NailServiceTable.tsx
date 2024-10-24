@@ -6,6 +6,8 @@ import NailServiceRow from './NailServiceRow';
 import HouseOfJu from '@/component/houseOfJu/HouseOfJu';
 import NailServiceMobileCard from './NailServiceMobileCard';
 import {DiVim} from 'react-icons/di';
+import classNames from 'classnames';
+import {isTaggedTemplateExpression} from 'typescript';
 
 const NailServiceAdmin = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);
@@ -32,7 +34,7 @@ const NailServiceAdmin = () => {
       {isMobile ? (
         <div>
           <div className='flex flex-col gap-4 mx-5 my-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-8 rounded-lg'>
-            <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-6 pb-5'>
               <h2 className='text-4xl font-jimNightshade uppercase text-[#FE6A6A]'>
                 Gestion des Prestations
               </h2>
@@ -46,22 +48,31 @@ const NailServiceAdmin = () => {
                 Cliquez pour afficher/masquer les prestations
               </p>
             </div>
-            {isTableVisible && (
-              <div>
-                {nailServiceList &&
-                  nailServiceList?.map((item) => (
-                    <Fragment key={item.id}>
-                      <NailServiceMobileCard
-                        id={item.id}
-                        name={item.name}
-                        description={item.description}
-                        duration={item.duration}
-                        price={item.price}
-                      />
-                    </Fragment>
-                  ))}
-              </div>
-            )}
+            <div
+              className={classNames(
+                'transition-max-height overflow-hidden duration-500',
+                {
+                  'max-h-0 ease-out-expo': !isTableVisible,
+                  'h-auto max-h-[1000px]': isTableVisible,
+                }
+              )}
+            >
+              <button className='ml-2 self-start py-2 bg-[#FE6A6A] w-24 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                Créer
+              </button>
+              {nailServiceList &&
+                nailServiceList?.map((item) => (
+                  <Fragment key={item.id}>
+                    <NailServiceMobileCard
+                      id={item.id}
+                      name={item.name}
+                      description={item.description}
+                      duration={item.duration}
+                      price={item.price}
+                    />
+                  </Fragment>
+                ))}
+            </div>
           </div>
         </div>
       ) : (
@@ -83,7 +94,18 @@ const NailServiceAdmin = () => {
                 </p>
               </div>
             </div>
-            {isTableVisible && (
+            <div
+              className={classNames(
+                'transition-max-height overflow-hidden duration-500',
+                {
+                  'max-h-0 ease-out-expo': !isTableVisible,
+                  'h-auto max-h-[1000px]': isTableVisible,
+                }
+              )}
+            >
+              <button className='self-start py-2 bg-[#FE6A6A] w-24 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                Créer
+              </button>
               <table className='w-full sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5'>
                 <thead className='bg-[#FFBCB2] text-white'>
                   <tr className='sm:table-row hidden'>
@@ -109,7 +131,7 @@ const NailServiceAdmin = () => {
                     ))}
                 </tbody>
               </table>
-            )}
+            </div>
           </div>
         </div>
       )}

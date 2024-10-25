@@ -4,21 +4,19 @@ import React from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
 
-import {editNailService} from '@/services/nailService';
+import {createNailService, editNailService} from '@/services/nailService';
 
 import {NailServiceProps} from '../card/NailServiceCard';
 import CreateOrEditInput, {
   CreateOrEditNailServiceProps,
 } from '../CreateOrEditInput';
 
-const EditServiceForm = (props: {
-  nailService: NailServiceProps[];
+const CreateServiceForm = (props: {
   id: number;
   pathName: string;
   setIsReload: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const router = useRouter();
-  const nailService = props.nailService.find((nail) => nail.id === props.id);
 
   const {
     register,
@@ -29,17 +27,17 @@ const EditServiceForm = (props: {
   const onSubmit: SubmitHandler<CreateOrEditNailServiceProps> = async (
     data
   ) => {
-    editNailService(props.id, {
+    createNailService({
       ...data,
       price: Number(data.price),
       duration: Number(data.duration),
     }).then((res) => {
-      if (res.status === 200) {
+      if (res.status === 201) {
         router.push(props.pathName);
         props.setIsReload(true);
-        toast.success('Successfull');
+        toast.success('Prestation ajoutée');
       } else {
-        toast.error('Echec de la modification');
+        toast.error("Echec de l'ajout");
       }
     });
   };
@@ -47,25 +45,24 @@ const EditServiceForm = (props: {
   return (
     <div className='text-bittersweet bg-white p-7 rounded-xl shadow-2xl'>
       <h3 className=' font-jimNightshade uppercase text-4xl pb-10'>
-        Modifier une prestation
+        Ajouter une prestation
       </h3>
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
         <CreateOrEditInput
           type={'text'}
-          id={nailService?.name as string}
+          id='name'
           label={'Nom'}
           name={'name'}
           register={register}
-          value={nailService?.name as string}
+          value={''}
         />
         <div className='flex flex-col'>
           <label htmlFor='description' className='font-bold'>
             *Description
           </label>
           <textarea
-            id={nailService?.name}
+            id='description'
             {...register('description')}
-            value={nailService?.description}
             cols={10}
             rows={8}
             className='focus:outline-none focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md p-3 text-justify'
@@ -74,19 +71,19 @@ const EditServiceForm = (props: {
 
         <CreateOrEditInput
           type={'number'}
-          id={nailService?.name as string}
+          id='price'
           label={'Prix'}
           name={'price'}
           register={register}
-          value={nailService?.price as number}
+          value={''}
         />
         <CreateOrEditInput
           type={'number'}
-          id={nailService?.name as string}
+          id='duration'
           label={'Durée'}
           name={'duration'}
           register={register}
-          value={nailService?.duration as number}
+          value={''}
         />
         <div className='flex justify-around'>
           <Link
@@ -106,4 +103,4 @@ const EditServiceForm = (props: {
   );
 };
 
-export default EditServiceForm;
+export default CreateServiceForm;

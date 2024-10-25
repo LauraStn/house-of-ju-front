@@ -2,6 +2,7 @@ import {Arima} from 'next/font/google';
 import Image from 'next/image';
 import React, {Fragment} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import {registerUser} from '@/services/authService';
 
@@ -31,11 +32,11 @@ const RegisterForm = () => {
       console.log(res);
 
       if (res.status === 201) {
-        // toast.success(res.data.message)
+        toast.success(res.data.message)
       } else {
         console.log(errors);
 
-        // toast.error(res.data.message)
+        toast.error(res.data.message)
       }
     });
 

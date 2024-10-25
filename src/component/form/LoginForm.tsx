@@ -10,6 +10,7 @@ import Input, {AuthProps} from '../Input';
 import {FormFields} from './RegisterForm';
 
 const LoginForm = () => {
+  const role = window.localStorage.getItem("role")
   const {
     register,
     handleSubmit,
@@ -22,14 +23,12 @@ const LoginForm = () => {
     loginUser(data).then((res) => {
       if (res.status === 201) {
         toast.success('Login successfull');
-        // window.localStorage.setItem('token', res.data.token.access_token);
-        // window.localStorage.setItem('role', res.data.role);
+        window.localStorage.setItem('token', res.data.token.access_token);
+        window.localStorage.setItem('role', res.data.role);
       } else {
-        console.log(errors);
-        
+        toast.error("error")
       }
     });
-  // .catch((e) => toast.error(e));
 
   const formFields: FormFields[] = [
     {
@@ -56,8 +55,8 @@ const LoginForm = () => {
         />
       </div>
       <div className='flex flex-col justify-center items-center gap-4 my-10 mx-auto p-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] rounded-lg w-[400px]'>
-        <h3 className='font-jimNightshade uppercase font-bold text-5xl text-[#FE6A6A]'>
-          Bienvenue
+        <h3 className='font-jimNightshade uppercase font-bold text-4xl text-[#FE6A6A]'>
+          Ravie de vous revoir
         </h3>
         <p className='text-center font-arima text-xl text-[#FFA79A]'>
           Connectez vous à espace client pour gérer vos rendez-vous.

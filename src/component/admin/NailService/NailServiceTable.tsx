@@ -11,6 +11,8 @@ import {getAllNailServices} from '@/services/nailService';
 
 import NailServiceMobileCard from './NailServiceMobileCard';
 import NailServiceRow from './NailServiceRow';
+import Link from 'next/link';
+import CreateServiceForm from '@/component/form/CreateServiceForm';
 
 const NailServiceAdmin = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);
@@ -19,6 +21,8 @@ const NailServiceAdmin = () => {
   );
   const params = useSearchParams();
   const pathName = usePathname();
+
+  const [isReload, setIsReload] = useState<boolean>(false);
 
   const toggleTableVisibility = () => {
     setIsTableVisible((prev) => !prev);
@@ -32,7 +36,9 @@ const NailServiceAdmin = () => {
       .catch((e) => {
         return e;
       });
-  }, []);
+    setIsReload(false);
+  }, [isReload]);
+
   const isMobile = useIsMobile();
 
   return (
@@ -63,9 +69,11 @@ const NailServiceAdmin = () => {
                 }
               )}
             >
-              <button className='ml-2 self-start py-2 bg-[#FE6A6A] w-48 mb-4 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
-                Ajouter une prestation
-              </button>
+              <Link href={`${pathName}?create=1`}>
+                <button className='ml-2 self-start py-2 bg-[#FE6A6A] w-48 mb-4 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                  Ajouter une prestation
+                </button>
+              </Link>
               {nailServiceList &&
                 nailServiceList?.map((item) => (
                   <Fragment key={item.id}>
@@ -102,9 +110,6 @@ const NailServiceAdmin = () => {
                 </p>
               </div>
             </div>
-            {/* <Modal>
-        <div></div>
-        </Modal>{' '} */}
             <div
               className={classNames(
                 'transition-max-height overflow-hidden duration-500',
@@ -114,9 +119,11 @@ const NailServiceAdmin = () => {
                 }
               )}
             >
-              <button className='self-start py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
-                Ajouter une prestation
-              </button>
+              <Link href={`${pathName}?create=1`}>
+                <button className='self-start py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                  Ajouter une prestation
+                </button>
+              </Link>
               <table className='w-full sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5'>
                 <thead className='bg-[#FFBCB2] text-white'>
                   <tr className='sm:table-row hidden'>
@@ -149,11 +156,27 @@ const NailServiceAdmin = () => {
         </div>
       )}
       <Modal isOpen={params.size > 0}>
-        {params.has('delete') && <DeleteServiceForm />}
+        {params.has('delete') && (
+          <DeleteServiceForm
+            id={Number(params.get('delete'))}
+            pathName={pathName}
+            setIsReload={setIsReload}
+          />
+        )}
         {params.has('edit') && (
           <EditServiceForm
             nailService={nailServiceList}
-            id={Number(params.get('edit'))} pathName={pathName}/>
+            id={Number(params.get('edit'))}
+            pathName={pathName}
+            setIsReload={setIsReload}
+          />
+        )}
+        {params.has('create') && (
+          <CreateServiceForm
+            id={Number(params.get('create'))}
+            pathName={pathName}
+            setIsReload={setIsReload}
+          />
         )}
       </Modal>
     </>

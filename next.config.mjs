@@ -11,6 +11,17 @@ const nextConfig = {
       },
     ],
   },
+  // webpack: (config, {dev, isServer}) => {
+  //   // Activer les source maps en développement uniquement
+  //   if (dev) {
+  //     config.devtool = 'source-map';
+  //   }
+
+  //   // Retourne la configuration modifiée
+  //   return config;
+  // },
+  // // Désactive les source maps en production pour éviter les erreurs 404
+  // productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;

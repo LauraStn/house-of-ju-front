@@ -8,14 +8,10 @@ const Modal = (
 ) => {
   return (
     <div
-      className={
-        (classNames(
-          'fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center backdrop-blur-sm',
-        {hidden:!props.isOpen,
-         block: props.isOpen,   
-        }
-        ))
-      }
+      className={classNames(
+        'fixed inset-0 flex justify-center items-center backdrop-blur-sm',
+        {hidden: !props.isOpen, block: props.isOpen}
+      )}
     >
       {props.children}
     </div>

@@ -1,15 +1,18 @@
 import Link from 'next/link';
-import { ReadonlyURLSearchParams } from 'next/navigation';
+import {ReadonlyURLSearchParams} from 'next/navigation';
 import React, {useState} from 'react';
 import {BsFillTrash3Fill} from 'react-icons/bs';
 import {FaPencilAlt} from 'react-icons/fa';
 
 import {NailServiceProps} from '@/component/card/NailServiceCard';
+import Modal from '@/component/modals/Modal';
 
-const NailServiceRow = (props: NailServiceProps& {
-  pathName: string,
-  params: ReadonlyURLSearchParams
-}) => {
+const NailServiceRow = (
+  props: NailServiceProps & {
+    pathName: string;
+    params: ReadonlyURLSearchParams;
+  }
+) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -42,28 +45,34 @@ const NailServiceRow = (props: NailServiceProps& {
         </td>
         <td className='border-[#FFF2F0] border w-24 p-3 sm:text-left text-red-400 cursor-pointer'>
           <div className='flex justify-around'>
-          <Link href={`${props.pathName}?delete=${props.id}`}>
-                <BsFillTrash3Fill className='hover:text-red-500' />
-              </Link>
-            <FaPencilAlt />
+            <Link href={`${props.pathName}?delete=${props.id}`}>
+              <BsFillTrash3Fill className='hover:text-red-500' />
+            </Link>
+            <Link href={`${props.pathName}?edit=${props.id}`}>
+              <FaPencilAlt />
+            </Link>
           </div>
         </td>
       </tr>
+
+      {/* Déplacer le Modal en dehors du tbody */}
       {isModalOpen && (
-        <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center'>
-          <div className='bg-white p-5 rounded-lg shadow-lg max-w-md w-full'>
-            <h3 className='text-lg text-[#FE6A6A] font-bold mb-4'>
-              Description Complète
-            </h3>
-            <p className='text-[#FFBCB2]'>{props.description}</p>
-            <button
-              className='mt-4 bg-[#FFBCB2] text-white px-4 py-2 rounded hover:bg-[#FE6A6A] transition duration-300'
-              onClick={closeModal}
-            >
-              Fermer
-            </button>
+        <Modal isOpen={isModalOpen}>
+          <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center'>
+            <div className='bg-white p-5 rounded-lg shadow-lg max-w-md w-full'>
+              <h3 className='text-lg text-[#FE6A6A] font-bold mb-4'>
+                Description Complète
+              </h3>
+              <p className='text-[#FFBCB2]'>{props.description}</p>
+              <button
+                className='mt-4 bg-[#FFBCB2] text-white px-4 py-2 rounded hover:bg-[#FE6A6A] transition duration-300'
+                onClick={closeModal}
+              >
+                Fermer
+              </button>
+            </div>
           </div>
-        </div>
+        </Modal>
       )}
     </>
   );

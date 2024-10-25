@@ -1,7 +1,6 @@
 import React from 'react';
 import {UseFormRegister} from 'react-hook-form';
 
-
 export type CreateOrEditNailServiceProps = {
   name: string;
   description: string;
@@ -9,7 +8,7 @@ export type CreateOrEditNailServiceProps = {
   price: number;
 };
 
-type editInputProps = {
+type CreateOrEditInputProps = {
   type: 'text' | 'number';
   id: string;
   label: string;
@@ -18,16 +17,16 @@ type editInputProps = {
   value: string | number;
 };
 
-const EditInput = (props: editInputProps) => {
+const CreateOrCreateOrEditInput = (props: CreateOrEditInputProps) => {
   return (
     <div className='flex flex-col'>
-      <label className='text-[#FE6A6A] font-arima' htmlFor={props.id}>
+      <label className='text-[#FE6A6A] font-bold' htmlFor={props.id}>
         *{props.label}
       </label>
       <input
         type={props.type}
         id={props.id}
-        className='focus:outline-none focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-8 w-72'
+        className='focus:outline-none p-2 focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-8 w-96'
         {...props.register(props.name, {required: true})}
         defaultValue={props.value}
       />
@@ -35,4 +34,4 @@ const EditInput = (props: editInputProps) => {
   );
 };
 
-export default EditInput;
+export default CreateOrCreateOrEditInput;

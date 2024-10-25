@@ -1,18 +1,41 @@
 import classNames from 'classnames';
-import React, { useState} from 'react';
+import Link from 'next/link';
+import {usePathname, useSearchParams} from 'next/navigation';
+import React, {Fragment, useEffect, useState} from 'react';
 
+import {ImageGalleryProps} from '@/component/card/ImageGalleryCard';
+import UploadImageForm from '@/component/form/UploadImageForm';
+import Modal from '@/component/modals/Modal';
 import {useIsMobile} from '@/hook/useIsMobile';
+import {getAllImagesGallery} from '@/services/imageGalleryService';
 
 import ImageCard from './ImageCard';
+import DeleteImageForm from '@/component/form/DeleteImageForm';
 
 const GalleryAdmin = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);
+  const [isReload, setIsReload] = useState<boolean>(false); //TODO: faire un hook
+  const [imagesList, setImagesList] = useState<ImageGalleryProps[]>([]);
+  const params = useSearchParams();
+  const pathName = usePathname();
+  const isMobile = useIsMobile();
 
   const toggleTableVisibility = () => {
     setIsTableVisible((prev) => !prev);
   };
 
-  const isMobile = useIsMobile();
+  useEffect(() => {
+    getAllImagesGallery()
+      .then((res) => {
+        setImagesList(res);
+        console.log(res);
+      })
+      .catch((e) => {
+        return e;
+      });
+    setIsReload(false);
+  }, [isReload]);
+
   return (
     <>
       {isMobile ? (
@@ -38,19 +61,26 @@ const GalleryAdmin = () => {
                   'transition-max-height overflow-hidden duration-500',
                   {
                     'max-h-0 ease-out-expo': !isTableVisible,
-                    'h-auto max-h-[1000px]': isTableVisible,
+                    'h-auto max-h-[10000px]': isTableVisible,
                   }
                 )}
               >
-                <button className='ml-2 self-start mb-10 py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
-                  Télécharger une image
-                </button>
+                <Link href={`${pathName}?upload=1`}>
+                  <button className='ml-2 self-start mb-10 py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                    Télécharger une image
+                  </button>
+                </Link>
                 <div className='flex flex-wrap gap-6 items-center'>
-                  <ImageCard id={0} image_url={''} />
-                  <ImageCard id={0} image_url={''} />
-                  <ImageCard id={0} image_url={''} />
-                  <ImageCard id={0} image_url={''} />
-                  <ImageCard id={0} image_url={''} />
+                  {imagesList &&
+                    imagesList.map((image) => (
+                      <Fragment key={image.id}>
+                        <ImageCard
+                          id={image.id}
+                          image_url={image.image_url}
+                          pathName={pathName}
+                        />
+                      </Fragment>
+                    ))}
                 </div>
               </div>
             </div>
@@ -77,27 +107,48 @@ const GalleryAdmin = () => {
             </div>
             <div
               className={classNames(
-                'transition-max-height overflow-hidden duration-500 p-8',
+                'transition-max-height overflow-hidden duration-500',
                 {
                   'max-h-0 ease-out-expo': !isTableVisible,
                   'h-auto max-h-[1000px]': isTableVisible,
                 }
               )}
             >
-              <button className='ml-2 self-start mb-10 py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
-                Télécharger une image
-              </button>
+              <Link href={`${pathName}?upload=1`}>
+                <button className='ml-2 self-start mb-10 py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                  Télécharger une image
+                </button>
+              </Link>
               <div className='flex flex-wrap gap-6 items-center'>
-                <ImageCard id={0} image_url={''} />
-                <ImageCard id={0} image_url={''} />
-                <ImageCard id={0} image_url={''} />
-                <ImageCard id={0} image_url={''} />
-                <ImageCard id={0} image_url={''} />
+                {imagesList &&
+                  imagesList.map((image) => (
+                    <Fragment key={image.id}>
+                      <ImageCard
+                        id={image.id}
+                        image_url={image.image_url}
+                        pathName={pathName}
+                      />
+                    </Fragment>
+                  ))}
               </div>
             </div>
           </div>
         </div>
       )}
+      <Modal isOpen={params.has('upload')}>
+        <UploadImageForm
+          id={Number(params.get('upload'))}
+          pathName={pathName}
+          setIsReload={setIsReload}
+        />
+      </Modal>
+      <Modal isOpen={params.has('delete-image')}>
+        <DeleteImageForm
+          id={Number(params.get('delete-image'))}
+          pathName={pathName}
+          setIsReload={setIsReload}
+        />
+      </Modal>
     </>
   );
 };

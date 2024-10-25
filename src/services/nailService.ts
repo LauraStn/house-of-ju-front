@@ -1,32 +1,38 @@
-import axios from "axios"
+import { CreateOrEditNailServiceProps } from '@/component/CreateOrEditInput';
+import axios from 'axios';
 
-import { CreateOrEditNailServiceProps } from "@/component/EditInput"
 
 export async function getAllNailServices() {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/all`
+  const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/all`;
 
-    const axiosConfig = {
-        headers: {
-            "content-type": "application/json",
-        }
-    }
-    return axios.get(url, axiosConfig).then((res)=> {
-        return res.data
-    }).catch((e)=> {
-        return e
+  const axiosConfig = {
+    headers: {
+      'content-type': 'application/json',
+    },
+  };
+
+  return axios
+    .get(url, axiosConfig)
+    .then((res) => {
+      return res.data;
     })
+    .catch((e) => {
+      return e;
+    });
 }
 
-export async function createNailService(nailService:CreateOrEditNailServiceProps) {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/add`;
-    
-    const axiosConfig = {
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-    };
-    return axios
+export async function createNailService(
+  nailService: CreateOrEditNailServiceProps
+) {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/add`;
+
+  const axiosConfig = {
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  };
+  return axios
     .post(url, nailService, axiosConfig)
     .then((res) => {
       return res;
@@ -36,17 +42,20 @@ export async function createNailService(nailService:CreateOrEditNailServiceProps
     });
 }
 
-export async function editNailService(id:number, nailService: CreateOrEditNailServiceProps) {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/update/${id}`;
+export async function editNailService(
+  id: number,
+  nailService: CreateOrEditNailServiceProps
+) {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/update/${id}`;
 
-    const axiosConfig = {
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-    };
+  const axiosConfig = {
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  };
 
-    return axios
+  return axios
     .patch(url, nailService, axiosConfig)
     .then((res) => {
       return res;
@@ -56,17 +65,17 @@ export async function editNailService(id:number, nailService: CreateOrEditNailSe
     });
 }
 
-export async function deleteNailService(id:number) {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/delete/${id}`;
-    
-    const axiosConfig = {
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-    };
+export async function deleteNailService(id: number) {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/delete/${id}`;
 
-    return axios
+  const axiosConfig = {
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  };
+
+  return axios
     .delete(url, axiosConfig)
     .then((res) => {
       return res;

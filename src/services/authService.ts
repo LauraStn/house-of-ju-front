@@ -2,7 +2,6 @@ import axios, {AxiosResponse} from 'axios';
 
 import {AuthProps} from '@/component/Input';
 
-type Response<T> = AxiosResponse<T>;
 export async function registerUser(
   user: AuthProps
 ): Promise<AxiosResponse<{message: string}>> {
@@ -25,7 +24,7 @@ export async function registerUser(
 
 export async function loginUser(
   user: Pick<AuthProps, 'email' | 'password'>
-): Promise<Response<{token: string; role_id: number}>> {
+): Promise<AxiosResponse> {
   const url = `${process.env.NEXT_PUBLIC_API_URL}auth/signin`;
 
   const axiosConfig = {

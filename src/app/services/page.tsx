@@ -15,6 +15,7 @@ import ongle5 from '../../../public/images/ongle5.webp';
 import ongle6 from '../../../public/images/ongle6.webp';
 
 export default function Services() {
+  
   const [nailServiceList, setNailServiceList] = useState<NailServiceProps[]>(
     []
   );

@@ -1,3 +1,5 @@
+'use client'
+
 import {Arima} from 'next/font/google';
 import Image from 'next/image';
 import React, {Fragment} from 'react';

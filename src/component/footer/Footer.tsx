@@ -54,11 +54,13 @@ const Footer = () => {
         </div>
       </div>
       <div className='bg-[#FFBCB2] text-[#781b1b] font-jimNightshade uppercase text-xl flex flex-col justify-center items-center gap-3 py-5'>
-        <div className='lg:flex-row lg:gap-8 flex flex-col justify-center items-center gap-1'>
-          <a href=''>Mentions Légales</a>
-          <a href=''>CGU</a>
-          <a href=''>Politique de confidentialité</a>
-        </div>
+        <nav className='lg:flex-row lg:gap-8 flex flex-col justify-center items-center gap-1'>
+          <a href='/mentions-legales'>Mentions Légales</a>
+          <a href='/cgu'>CGU</a>
+          <a href='/politique-de-confidentialite'>
+            Politique de confidentialité
+          </a>
+        </nav>
         <p>
           Réalisé par
           <a

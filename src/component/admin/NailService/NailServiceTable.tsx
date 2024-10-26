@@ -1,3 +1,4 @@
+'use client'
 import classNames from 'classnames';
 import {usePathname, useSearchParams} from 'next/navigation';
 import React, {Fragment, useEffect, useState} from 'react';
@@ -36,7 +37,7 @@ const NailServiceAdmin = () => {
       .catch((e) => {
         return e;
       });
-    setIsReload(false);
+    // setIsReload(false);
   }, [isReload]);
 
   const isMobile = useIsMobile();
@@ -75,7 +76,7 @@ const NailServiceAdmin = () => {
                 </button>
               </Link>
               {nailServiceList &&
-                nailServiceList?.map((item) => (
+                nailServiceList.map((item) => (
                   <Fragment key={item.id}>
                     <NailServiceMobileCard
                       id={item.id}
@@ -136,7 +137,7 @@ const NailServiceAdmin = () => {
                 </thead>
                 <tbody className='bg-white'>
                   {nailServiceList &&
-                    nailServiceList?.map((item) => (
+                    nailServiceList.map((item) => (
                       <Fragment key={item.id}>
                         <NailServiceRow
                           id={item.id}

@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import React from 'react';
 
@@ -30,6 +32,9 @@ const Header = () => {
           </li>
           <li>
             <a href='/services'>Beauté des ongles</a>
+          </li>
+          <li>
+            <a href='/profil'>Profil</a>
           </li>
         </ul>
       </nav>

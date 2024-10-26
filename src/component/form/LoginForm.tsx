@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React, {Fragment} from 'react';
-import {SubmitHandler,useForm} from 'react-hook-form';
+import {SubmitHandler, useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
 
 import {loginUser} from '@/services/authService';
@@ -10,7 +10,6 @@ import Input, {AuthProps} from '../Input';
 import {FormFields} from './RegisterForm';
 
 const LoginForm = () => {
-  const role = window.localStorage.getItem("role")
   const {
     register,
     handleSubmit,
@@ -26,7 +25,7 @@ const LoginForm = () => {
         window.localStorage.setItem('token', res.data.token.access_token);
         window.localStorage.setItem('role', res.data.role);
       } else {
-        toast.error("error")
+        toast.error('error');
       }
     });
 

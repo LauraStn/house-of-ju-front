@@ -11,6 +11,7 @@ const config: Config = {
         'admin': "url('/images/admin2.webp')",
         'pink-flowers': "url('/images/pink-flowers.jpg')",
         'gallery-flowers': "url('/images/nails-flowers.webp')",
+        'cgu': "url('/images/cgu.webp')",
       },
       fontFamily: {
         laBelleAurore: ['var(--font-la-belle-aurore)'],

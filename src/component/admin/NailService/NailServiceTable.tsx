@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import classNames from 'classnames';
 import {usePathname, useSearchParams} from 'next/navigation';
 import React, {Fragment, useEffect, useState} from 'react';
@@ -70,7 +70,7 @@ const NailServiceAdmin = () => {
                 }
               )}
             >
-              <Link href={`${pathName}?create=1`}>
+              <Link href={`${pathName}?create=1`} scroll={false}>
                 <button className='ml-2 self-start py-2 bg-[#FE6A6A] w-48 mb-4 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
                   Ajouter une prestation
                 </button>
@@ -120,7 +120,7 @@ const NailServiceAdmin = () => {
                 }
               )}
             >
-              <Link href={`${pathName}?create=1`}>
+              <Link href={`${pathName}?create=1`} scroll={false}>
                 <button className='self-start py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
                   Ajouter une prestation
                 </button>

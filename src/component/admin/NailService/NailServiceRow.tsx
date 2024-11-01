@@ -46,17 +46,15 @@ const NailServiceRow = (
         </td>
         <td className='border-[#FFF2F0] border w-24 p-3 sm:text-left text-red-400 cursor-pointer'>
           <div className='flex justify-around'>
-            <Link href={`${props.pathName}?delete=${props.id}`}>
+            <Link href={`${props.pathName}?delete=${props.id}`} scroll={false}>
               <BsFillTrash3Fill className='hover:text-red-500' />
             </Link>
-            <Link href={`${props.pathName}?edit=${props.id}`}>
+            <Link href={`${props.pathName}?edit=${props.id}`} scroll={false}>
               <FaPencilAlt />
             </Link>
           </div>
         </td>
       </tr>
-
-      {/* Déplacer le Modal en dehors du tbody */}
       {isModalOpen && (
         <Modal isOpen={isModalOpen}>
           <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center'>

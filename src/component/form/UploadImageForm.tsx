@@ -100,6 +100,7 @@ const UploadImageForm = (props: {
           <div className='flex pt-10 justify-around'>
             <Link
               href={props.pathName}
+              scroll={false}
               onClick={resetPreview}
               className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-[#FFA79A] rounded-lg'
             >

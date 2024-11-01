@@ -36,7 +36,7 @@ const DeleteServiceForm = (props: {
         <h3>Voulez vous vraiment supprimer cet élément ?</h3>
         <div className='flex justify-around pt-3'>
           <Link
-            href={pathName}
+            href={pathName} scroll={false}
             className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-[#FFA79A] rounded-lg'
           >
             Annuler

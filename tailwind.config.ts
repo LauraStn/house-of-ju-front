@@ -7,11 +7,12 @@ const config: Config = {
       backgroundImage: {
         'home-hands': "url('/images/woman-hands.webp')",
         'home-flower': "url('/images/flowers.jpg')",
-        'nails1': "url('/images/nails1.webp')",
-        'admin': "url('/images/admin2.webp')",
+        nails1: "url('/images/nails1.webp')",
+        admin: "url('/images/admin2.webp')",
         'pink-flowers': "url('/images/pink-flowers.jpg')",
         'gallery-flowers': "url('/images/nails-flowers.webp')",
-        'cgu': "url('/images/cgu.webp')",
+        cgu: "url('/images/cgu.webp')",
+        profil: "url('/images/profil.webp')",
       },
       fontFamily: {
         laBelleAurore: ['var(--font-la-belle-aurore)'],
@@ -19,14 +20,14 @@ const config: Config = {
         arima: ['var(--font-arima)'],
       },
       colors: {
-        'bittersweet': '#FE6A6A',
-        'melon': '#FFBCB2',
-        'mona-lisa':'#FFA79A',
-        'chardon': '#FFF2F0',
+        bittersweet: '#FE6A6A',
+        melon: '#FFBCB2',
+        'mona-lisa': '#FFA79A',
+        chardon: '#FFF2F0',
         'persian-plum': '#781b1b',
       },
       transitionProperty: {
-        'height': 'height',
+        height: 'height',
         'max-height': 'max-height',
       },
       transitionTimingFunction: {

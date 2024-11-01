@@ -9,7 +9,7 @@ import Link from 'next/link';
 const ImageCard = (props: ImageGalleryProps & {pathName: string}) => {
   return (
     <div className='flex flex-col items-end gap-3 p-4 rounded-lg mb-6 shadow-lg text-bittersweet shadow-melon'>
-      <Link href={`${props.pathName}?delete-image=${props.id}`}>
+      <Link href={`${props.pathName}?delete-image=${props.id}`} scroll={false}>
         <BsFillTrash3Fill className='hover:text-red-500' />
       </Link>
       <Image

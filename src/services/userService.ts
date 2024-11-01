@@ -11,7 +11,7 @@ export async function getUserLogged() {
   };
 
   return axios
-    .post(url, axiosConfig)
+    .get(url, axiosConfig)
     .then((res) => {
       return res;
     })

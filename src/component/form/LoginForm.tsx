@@ -8,8 +8,14 @@ import {loginUser} from '@/services/authService';
 
 import Input, {AuthProps} from '../Input';
 import {FormFields} from './RegisterForm';
+import Modal from '../modals/Modal';
+import {useSearchParams, usePathname} from 'next/navigation';
+import SendMailReset from './SendMailReset';
+import Link from 'next/link';
 
 const LoginForm = () => {
+  const params = useSearchParams();
+  const pathName = usePathname();
   const {
     register,
     handleSubmit,
@@ -25,7 +31,7 @@ const LoginForm = () => {
         window.localStorage.setItem('token', res.data.token.access_token);
         window.localStorage.setItem('role', res.data.role);
       } else {
-        toast.error('error');
+        toast.error('Identifiants incorrect');
       }
     });
 
@@ -84,12 +90,17 @@ const LoginForm = () => {
           </div>
           <div className='mt-4 flex flex-col gap-3 justify-center items-center'>
             <p className='text-[#FFA79A]'>Mot de passe oublié ?</p>
-            <a className='text-[#FE6A6A]' href=''>
-              Réinitialiser le mot de passe
-            </a>
+            <Link href={`${pathName}?reset=1`} scroll={false}>
+              <p className='text-[#FE6A6A] cursor-pointer'>
+                Réinitialiser le mot de passe
+              </p>
+            </Link>
           </div>
         </form>
       </div>
+      <Modal isOpen={params.has('reset')}>
+        <SendMailReset pathName={pathName} />
+      </Modal>
     </div>
   );
 };

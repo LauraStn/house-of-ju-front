@@ -7,6 +7,7 @@ import {ToastContainer} from 'react-toastify';
 
 import Footer from '@/component/footer/Footer';
 import Header from '@/component/header/Header';
+import {getUserLogged} from '@/services/userService';
 
 export const metadata: Metadata = {
   title: 'House of Ju',
@@ -31,11 +32,12 @@ export const arima = Arima({
   variable: '--font-arima',
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const userLogged = await getUserLogged()
   return (
     <html lang='en'>
       <body

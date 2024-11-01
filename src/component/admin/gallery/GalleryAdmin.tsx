@@ -66,7 +66,7 @@ const GalleryAdmin = () => {
                   }
                 )}
               >
-                <Link href={`${pathName}?upload=1`}>
+                <Link href={`${pathName}?upload=1`} scroll={false}>
                   <button className='ml-2 self-start mb-10 py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
                     Télécharger une image
                   </button>
@@ -115,7 +115,7 @@ const GalleryAdmin = () => {
                 }
               )}
             >
-              <Link href={`${pathName}?upload=1`}>
+              <Link href={`${pathName}?upload=1`} scroll={false}>
                 <button className='ml-2 self-start mb-10 py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
                   Télécharger une image
                 </button>

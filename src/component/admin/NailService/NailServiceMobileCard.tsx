@@ -38,10 +38,10 @@ const NailServiceMobileCard = (
               {isExpanded ? 'Voir moins' : 'Voir plus'}
             </button>
             <div className='flex gap-4 cursor-pointer text-[#FE6A6A]'>
-              <Link href={`${props.pathName}?delete=${props.id}`}>
+              <Link href={`${props.pathName}?delete=${props.id}`} scroll={false}>
                 <BsFillTrash3Fill className='hover:text-red-500' />
               </Link>
-              <Link href={`${props.pathName}?edit=${props.id}`}>
+              <Link href={`${props.pathName}?edit=${props.id}`} scroll={false}>
                 <FaPencilAlt className='hover:text-red-500' />
               </Link>
             </div>

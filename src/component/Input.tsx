@@ -28,7 +28,7 @@ const Input = (props: inputProps) => {
       <input
         type={props.type}
         id={props.id}
-        className='focus:outline-none focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-8 w-72'
+        className='focus:outline-none p-2 focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-8 w-72'
         {...props.register(props.name, {required: true})}
       />
     </div>

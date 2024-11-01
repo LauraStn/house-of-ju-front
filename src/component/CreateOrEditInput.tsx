@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import {UseFormRegister} from 'react-hook-form';
@@ -27,7 +27,7 @@ const CreateOrCreateOrEditInput = (props: CreateOrEditInputProps) => {
       </label>
       <input
         type={props.type}
-        id={props.id}
+        id={props.id} //TODO: modifier l'input duration (select) avec valeur: 30/60/90/120
         className='focus:outline-none p-2 focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-8 w-96'
         {...props.register(props.name, {required: true})}
         defaultValue={props.value}

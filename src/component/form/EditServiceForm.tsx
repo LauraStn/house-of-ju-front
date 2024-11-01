@@ -93,6 +93,7 @@ const EditServiceForm = (props: {
         <div className='flex justify-around'>
           <Link
             href={props.pathName}
+            scroll={false}
             className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-[#FFA79A] rounded-lg'
           >
             Annuler

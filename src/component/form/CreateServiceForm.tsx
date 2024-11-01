@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import React from 'react';
@@ -88,7 +88,7 @@ const CreateServiceForm = (props: {
         />
         <div className='flex justify-around'>
           <Link
-            href={props.pathName}
+            href={props.pathName} scroll={false}
             className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-[#FFA79A] rounded-lg'
           >
             Annuler

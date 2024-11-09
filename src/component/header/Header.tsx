@@ -9,7 +9,7 @@ import {logoutAction} from '@/action/logoutAction';
 import {Appointment} from '@/services/appointmentService';
 import classNames from 'classnames';
 import {useIsMobile} from '@/hook/useIsMobile';
-import {Burger} from '../Burger';
+import {Burger} from './Burger';
 
 type User = {
   id: number;

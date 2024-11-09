@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-import { CreateOrEditNailServiceProps } from '@/component/CreateOrEditInput';
-
+import {CreateOrEditNailServiceProps} from '@/component/inputs/CreateOrEditInput';
 
 export async function getAllNailServices() {
   const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/all`;

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
@@ -11,7 +11,7 @@ import {editNailService} from '@/services/nailService';
 import {NailServiceProps} from '../card/NailServiceCard';
 import CreateOrEditInput, {
   CreateOrEditNailServiceProps,
-} from '../CreateOrEditInput';
+} from '../inputs/CreateOrEditInput';
 
 const EditServiceForm = (props: {
   nailService: NailServiceProps[];
@@ -22,10 +22,7 @@ const EditServiceForm = (props: {
   const router = useRouter();
   const nailService = props.nailService.find((nail) => nail.id === props.id);
 
-  const {
-    register,
-    handleSubmit,
-  } = useForm<CreateOrEditNailServiceProps>();
+  const {register, handleSubmit} = useForm<CreateOrEditNailServiceProps>();
 
   const onSubmit: SubmitHandler<CreateOrEditNailServiceProps> = async (
     data

@@ -9,7 +9,7 @@ import {createNailService} from '@/services/nailService';
 
 import CreateOrEditInput, {
   CreateOrEditNailServiceProps,
-} from '../CreateOrEditInput';
+} from '../inputs/CreateOrEditInput';
 
 const CreateServiceForm = (props: {
   id: number;
@@ -18,10 +18,7 @@ const CreateServiceForm = (props: {
 }) => {
   const router = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-  } = useForm<CreateOrEditNailServiceProps>();
+  const {register, handleSubmit} = useForm<CreateOrEditNailServiceProps>();
 
   const onSubmit: SubmitHandler<CreateOrEditNailServiceProps> = async (
     data
@@ -86,7 +83,8 @@ const CreateServiceForm = (props: {
         />
         <div className='flex justify-around'>
           <Link
-            href={props.pathName} scroll={false}
+            href={props.pathName}
+            scroll={false}
             className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-[#FFA79A] rounded-lg'
           >
             Annuler

@@ -8,7 +8,7 @@ import {toast} from 'react-toastify';
 
 import {registerUser} from '@/services/authService';
 
-import Input, {AuthProps} from '../Input';
+import Input, {AuthProps} from '../inputs/Input';
 
 export type FormFields = {
   type: string;

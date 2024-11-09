@@ -9,7 +9,7 @@ import {toast} from 'react-toastify';
 
 import {loginUser} from '@/services/authService';
 
-import Input, {AuthProps} from '../Input';
+import Input, {AuthProps} from '../inputs/Input';
 import Modal from '../modals/Modal';
 import {FormFields} from './RegisterForm';
 import SendMailReset from './SendMailReset';

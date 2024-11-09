@@ -2,20 +2,17 @@
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import React from 'react';
-import {SubmitHandler,useForm} from 'react-hook-form';
+import {SubmitHandler, useForm} from 'react-hook-form';
 import {RxCross2} from 'react-icons/rx';
 import {toast} from 'react-toastify';
 
 import {sendResetEmail} from '@/services/authService';
 
-import {AuthProps} from '../Input';
+import {AuthProps} from '../inputs/Input';
 
 const SendMailReset = (props: {pathName: string}) => {
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-  } = useForm<AuthProps>();
+  const {register, handleSubmit} = useForm<AuthProps>();
 
   const onSubmit: SubmitHandler<Pick<AuthProps, 'email'>> = (data) =>
     sendResetEmail(data).then((res) => {
@@ -28,7 +25,11 @@ const SendMailReset = (props: {pathName: string}) => {
     });
   return (
     <div className='text-bittersweet w-[450px] flex flex-col bg-white p-7 rounded-xl shadow-2xl'>
-      <Link href={props.pathName} scroll={false} className='cursor-pointer self-end'>
+      <Link
+        href={props.pathName}
+        scroll={false}
+        className='cursor-pointer self-end'
+      >
         <RxCross2 />
       </Link>
       <div className='p-4 flex flex-col justify-center items-center gap-2'>

@@ -2,9 +2,7 @@ import axios, {AxiosResponse} from 'axios';
 
 import {AuthProps} from '@/component/Input';
 
-export async function registerUser(
-  user: AuthProps
-): Promise<AxiosResponse<{message: string}>> {
+export async function registerUser(user: AuthProps): Promise<AxiosResponse> {
   const url = `${process.env.NEXT_PUBLIC_API_URL}auth/signup`;
 
   const axiosConfig = {

@@ -29,7 +29,7 @@ export default function Services() {
       });
   }, []);
   const nailImages = [ongle1, ongle2, ongle3, ongle4, ongle5, ongle6];
-  console.log(nailServiceList);
+  
   return (
     <div>
       <div className='bg-nails1 md:flex md:justify-center md:items-center bg-no-repeat bg-cover h-[300px] py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>

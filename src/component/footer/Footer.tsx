@@ -39,9 +39,9 @@ const Footer = () => {
           Horaires
         </h3>
         <p className='text-[#FFA79A] capitalize'>
-          Mardi, mercredi, jeudi, vendredi, samedi 9h - 18h
+        Lundi, Mardi, mercredi, jeudi, vendredi, 9h - 18h
           <br />
-          Lundi et dimanche fermé
+          Samedi et dimanche fermé
         </p>
         <hr className='h-0.5 lg:w-1/4 w-3/4 bg-[#FFBCB2]'></hr>
         <div className='flex text-2xl gap-2 mb-4 text-[#FE6A6A]'>

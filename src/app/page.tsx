@@ -19,7 +19,7 @@ const jim_Nightshade = Jim_Nightshade({
 export default function Home() {
   return (
     <div className={`${laBelleAurore}`}>
-      <div className='bg-home-hands bg-cover lg:bg-cover bg-no-repeat w-[2400] h-[400px] lg:h-[500px] lg:bg-[center_bottom_-10rem] mb-28 relative'>
+      <div className='bg-home-hands bg-cover lg:bg-cover bg-no-repeat w-[2400] h-[400px] lg:h-[500px] lg:bg-[center_bottom_-10rem] mb-10 relative  -z-[1]'>
         <a
           href=''
           className={classNames(
@@ -30,13 +30,13 @@ export default function Home() {
           Prothésiste ongulaire
         </a>
       </div>
-      <div className='flex flex-col mb-40'>
+      <div className='flex flex-col mb-32'>
         <Image
           src={'/images/hands.png'}
           alt={''}
           width={400}
           height={200}
-          className='self-center'
+          className='self-center '
         />
         <h2
           className={classNames(
@@ -55,7 +55,7 @@ export default function Home() {
             width={1170}
             height={1560}
             className={classNames(
-              'border-[14px] border-[#FFBCB2] -top-7 w-[650px] h-[710px] min-[1148px]:w-[480px] min-[1148px]:h-[690px] min-[1148px]:absolute',
+              'border-[14px] border-[#FFBCB2] -top-7 w-[650px]  min-[1148px]:w-[480px] min-[1148px]:h-[690px] min-[1148px]:absolute',
               'static'
             )}
           />
@@ -63,7 +63,7 @@ export default function Home() {
         <div className='flex flex-col items-center gap-10 px-12 py-12 min-[1148px]:pl-[30rem] min-[1148px]:items-baseline'>
           <h2
             className={classNames(
-              'text-[#FE6A6A] text-7xl uppercase font-jimNightshade'
+              'text-[#FE6A6A] text-5xl md:text-7xl self-start uppercase font-jimNightshade'
             )}
           >
             Julia santin
@@ -84,7 +84,7 @@ export default function Home() {
           <a
             href=''
             className={classNames(
-              "text-[#FE6A6A] text-3xl uppercase after:content-['<-'] before:content-['->'] font-jimNightshade"
+              "text-[#FE6A6A] text-2xl md:text-3xl uppercase after:content-['<-'] before:content-['->'] font-jimNightshade"
             )}
           >
             En savoir plus sur moi
@@ -103,7 +103,7 @@ export default function Home() {
             <br /> des ongles
           </h3>
           <a
-            href='/services'
+            href='/prestations'
             className="text-[#FE6A6A] after:content-['<-'] before:content-['->']"
           >
             {' '}
@@ -153,7 +153,7 @@ export default function Home() {
             </p>
             <div className='border py-[10px] border-[#FFBCB2]'>
               <a
-                href='/login'
+                href='/connexion'
                 className={classNames(
                   'uppercase text-lg text-white bg-[#FFBCB2] w-full py-1 px-10'
                 )}

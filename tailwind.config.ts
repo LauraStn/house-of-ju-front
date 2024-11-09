@@ -13,6 +13,7 @@ const config: Config = {
         'gallery-flowers': "url('/images/nails-flowers.webp')",
         cgu: "url('/images/cgu.webp')",
         profil: "url('/images/profil.webp')",
+        rdv: "url('/images/rdv.webp')",
       },
       fontFamily: {
         laBelleAurore: ['var(--font-la-belle-aurore)'],
@@ -24,7 +25,7 @@ const config: Config = {
         melon: '#FFBCB2',
         'mona-lisa': '#FFA79A',
         chardon: '#FFF2F0',
-        'persian-plum': '#781b1b',
+        'persian-plum': '#781B1B',
       },
       transitionProperty: {
         height: 'height',

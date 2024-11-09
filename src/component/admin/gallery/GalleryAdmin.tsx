@@ -5,13 +5,13 @@ import {usePathname, useSearchParams} from 'next/navigation';
 import React, {Fragment, useEffect, useState} from 'react';
 
 import {ImageGalleryProps} from '@/component/card/ImageGalleryCard';
+import DeleteImageForm from '@/component/form/DeleteImageForm';
 import UploadImageForm from '@/component/form/UploadImageForm';
 import Modal from '@/component/modals/Modal';
 import {useIsMobile} from '@/hook/useIsMobile';
 import {getAllImagesGallery} from '@/services/imageGalleryService';
 
 import ImageCard from './ImageCard';
-import DeleteImageForm from '@/component/form/DeleteImageForm';
 
 const GalleryAdmin = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);

@@ -5,9 +5,8 @@ import React from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
 
-import {createNailService, editNailService} from '@/services/nailService';
+import {createNailService} from '@/services/nailService';
 
-import {NailServiceProps} from '../card/NailServiceCard';
 import CreateOrEditInput, {
   CreateOrEditNailServiceProps,
 } from '../CreateOrEditInput';
@@ -22,7 +21,6 @@ const CreateServiceForm = (props: {
   const {
     register,
     handleSubmit,
-    formState: {errors},
   } = useForm<CreateOrEditNailServiceProps>();
 
   const onSubmit: SubmitHandler<CreateOrEditNailServiceProps> = async (

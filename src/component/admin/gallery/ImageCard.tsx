@@ -1,10 +1,10 @@
 'use client'
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import {BsFillTrash3Fill} from 'react-icons/bs';
 
 import {ImageGalleryProps} from '@/component/card/ImageGalleryCard';
-import Link from 'next/link';
 
 const ImageCard = (props: ImageGalleryProps & {pathName: string}) => {
   return (

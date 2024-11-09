@@ -1,5 +1,6 @@
-import { CreateOrEditNailServiceProps } from '@/component/CreateOrEditInput';
 import axios from 'axios';
+
+import { CreateOrEditNailServiceProps } from '@/component/CreateOrEditInput';
 
 
 export async function getAllNailServices() {

@@ -1,9 +1,11 @@
 'use client';
 import classNames from 'classnames';
+import Link from 'next/link';
 import {usePathname, useSearchParams} from 'next/navigation';
 import React, {Fragment, useEffect, useState} from 'react';
 
 import {NailServiceProps} from '@/component/card/NailServiceCard';
+import CreateServiceForm from '@/component/form/CreateServiceForm';
 import DeleteServiceForm from '@/component/form/DeleteServiceForm';
 import EditServiceForm from '@/component/form/EditServiceForm';
 import Modal from '@/component/modals/Modal';
@@ -12,8 +14,6 @@ import {getAllNailServices} from '@/services/nailService';
 
 import NailServiceMobileCard from './NailServiceMobileCard';
 import NailServiceRow from './NailServiceRow';
-import Link from 'next/link';
-import CreateServiceForm from '@/component/form/CreateServiceForm';
 
 const NailServiceAdmin = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);

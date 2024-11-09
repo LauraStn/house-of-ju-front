@@ -17,11 +17,7 @@ const UploadImageForm = (props: {
   pathName: string;
   setIsReload: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: {errors},
-  } = useForm<AddImageGallery>();
+  const {register, handleSubmit} = useForm<AddImageGallery>();
   const router = useRouter();
 
   const [previewUrl, setPreviewUrl] = useState<{src: string; name: string}>();
@@ -48,7 +44,8 @@ const UploadImageForm = (props: {
           props.setIsReload(true);
           resetPreview();
         }
-      } catch (error) {
+      } catch (e) {
+        console.log(e);
         toast.error('Erreur lors du téléchargement');
       }
     }

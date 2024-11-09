@@ -25,7 +25,6 @@ const EditServiceForm = (props: {
   const {
     register,
     handleSubmit,
-    formState: {errors},
   } = useForm<CreateOrEditNailServiceProps>();
 
   const onSubmit: SubmitHandler<CreateOrEditNailServiceProps> = async (

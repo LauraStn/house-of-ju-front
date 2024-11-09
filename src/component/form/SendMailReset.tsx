@@ -1,19 +1,20 @@
 'use client';
-import {sendResetEmail} from '@/services/authService';
-import React from 'react';
-import {useForm, SubmitHandler} from 'react-hook-form';
-import {toast} from 'react-toastify';
-import {AuthProps} from '../Input';
-import {useRouter} from 'next/navigation';
-import {RxCross2} from 'react-icons/rx';
 import Link from 'next/link';
+import {useRouter} from 'next/navigation';
+import React from 'react';
+import {SubmitHandler,useForm} from 'react-hook-form';
+import {RxCross2} from 'react-icons/rx';
+import {toast} from 'react-toastify';
+
+import {sendResetEmail} from '@/services/authService';
+
+import {AuthProps} from '../Input';
 
 const SendMailReset = (props: {pathName: string}) => {
   const router = useRouter();
   const {
     register,
     handleSubmit,
-    formState: {errors},
   } = useForm<AuthProps>();
 
   const onSubmit: SubmitHandler<Pick<AuthProps, 'email'>> = (data) =>

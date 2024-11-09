@@ -17,7 +17,7 @@ export default function MentionsLegales() {
           </h2>
         </div>
       </div>
- 
+
       <div className='text-mona-lisa md:mx-auto flex flex-col gap-8 mx-5 my-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-8 rounded-lg'>
         <div className='flex flex-col gap-4'>
           {' '}
@@ -52,29 +52,30 @@ export default function MentionsLegales() {
             Le responsable publication est une personne physique ou une personne
             morale.
             <br />
-            <span className='font-bold'>Hébergeur :</span> [Nom de l'hébergeur]
+            <span className='font-bold'>Hébergeur :</span> [Nom de
+            l&apos;hébergeur]
           </p>
         </div>
         <div className='flex flex-col gap-4'>
           <h3 className='font-jimNightshade uppercase text-3xl text-[#FE6A6A]'>
-            Conditions générales d’utilisation du site :
+            Conditions générales d&apos;utilisation du site :
           </h3>
           <p>
-            L'utilisation du site{' '}
+            L&apos;utilisation du site{' '}
             <a href='/' className='text-bittersweet font-bold'>
               https://house-of-ju.fr/
             </a>{' '}
-            implique l'acceptation complète et sans réserve des conditions
-            générales d'utilisation décrites ci-dessous. Ces conditions peuvent
-            être modifiées ou complétées à tout moment, il est donc recommandé
-            aux utilisateurs de les consulter régulièrement.
+            implique l&apos;acceptation complète et sans réserve des conditions
+            générales d&apos;utilisation décrites ci-dessous. Ces conditions
+            peuvent être modifiées ou complétées à tout moment, il est donc
+            recommandé aux utilisateurs de les consulter régulièrement.
           </p>
           <p>
             Le site est normalement accessible aux utilisateurs à tout moment.
             Cependant, une interruption pour maintenance technique peut être
-            décidée par Julia Santin, qui s'efforcera de prévenir les
-            utilisateurs à l'avance en indiquant les dates et heures de
-            l'intervention.
+            décidée par Julia Santin, qui s&apos;efforcera de prévenir les
+            utilisateurs à l&apos;avance en indiquant les dates et heures de
+            l&apos;intervention.
           </p>
           <p>
             Le site{' '}
@@ -82,7 +83,7 @@ export default function MentionsLegales() {
               https://house-of-ju.fr/
             </a>{' '}
             est régulièrement mis à jour par Laura Santin. De même, les mentions
-            légales peuvent être modifiées à tout moment et s'imposent aux
+            légales peuvent être modifiées à tout moment et s&apos;imposent aux
             utilisateurs, qui sont invités à les consulter fréquemment pour en
             prendre connaissance.
           </p>
@@ -94,10 +95,11 @@ export default function MentionsLegales() {
 
           <p>Le site utilise la technologie JavaScript.</p>
           <p>
-            Le site web décline toute responsabilité pour d'éventuels dommages
-            matériels résultant de son utilisation. Par ailleurs, l'utilisateur
-            s'engage à accéder au site avec un équipement récent, exempt de
-            virus, et en utilisant un navigateur moderne et à jour.
+            Le site web décline toute responsabilité pour d&apos;éventuels
+            dommages matériels résultant de son utilisation. Par ailleurs,
+            l&apos;utilisateur s&apos;engage à accéder au site avec un
+            équipement récent, exempt de virus, et en utilisant un navigateur
+            moderne et à jour.
           </p>
         </div>{' '}
         <div className='flex flex-col gap-4'>
@@ -109,26 +111,26 @@ export default function MentionsLegales() {
             <a href='/' className='text-bittersweet font-bold'>
               https://house-of-ju.fr/
             </a>{' '}
-            a pour objectif de fournir des informations sur l'ensemble des
+            a pour objectif de fournir des informations sur l&apos;ensemble des
             activités de la société.
           </p>
           <p>
-            Julia Santin s'efforce de diffuser sur le site{' '}
+            Julia Santin s&apos;efforce de diffuser sur le site{' '}
             <a href='/' className='text-bittersweet font-bold'>
               https://house-of-ju.fr/
             </a>{' '}
             des informations aussi exactes que possible. Toutefois, elle ne peut
             être tenue responsable des omissions, inexactitudes ou lacunes dans
-            la mise à jour, qu'elles soient de son fait ou de celui des tiers
-            partenaires qui fournissent ces informations.
+            la mise à jour, qu&apos;elles soient de son fait ou de celui des
+            tiers partenaires qui fournissent ces informations.
           </p>
           <p>
             Toutes les informations présentes sur le site{' '}
             <a href='/' className='text-bittersweet font-bold'>
               https://house-of-ju.fr/
             </a>{' '}
-            sont données à titre indicatif et sont susceptibles d'évoluer. Par
-            ailleurs, les renseignements affichés ne sont pas exhaustifs et
+            sont données à titre indicatif et sont susceptibles d&apos;évoluer.
+            Par ailleurs, les renseignements affichés ne sont pas exhaustifs et
             peuvent être modifiés après leur mise en ligne.
           </p>
         </div>
@@ -151,10 +153,11 @@ export default function MentionsLegales() {
             préalable de : Julia Santin.
           </p>
           <p>
-            oute exploitation non autorisée du site ou de l’un quelconque des
-            éléments qu’il contient sera considérée comme constitutive d’une
-            contrefaçon et poursuivie conformément aux dispositions des articles
-            L.335-2 et suivants du Code de Propriété Intellectuelle.
+            Toute exploitation non autorisée du site ou de l’un quelconque des
+            éléments qu&apos;il contient sera considérée comme constitutive
+            d&apos;une contrefaçon et poursuivie conformément aux dispositions
+            des articles L.335-2 et suivants du Code de Propriété
+            Intellectuelle.
           </p>
         </div>
         <div className='flex flex-col gap-4'>
@@ -164,64 +167,30 @@ export default function MentionsLegales() {
           <p>
             En France, les données personnelles sont notamment protégées par la
             loi n° 78-87 du 6 janvier 1978, la loi n° 2004-801 du 6 août 2004,
-            l’article L. 226-13 du Code pénal et la Directive Européenne du 24
-            octobre 1995.
+            l&apos;article L. 226-13 du Code pénal et la Directive Européenne du
+            24 octobre 1995.
           </p>
           <p>
-            Lors de l'utilisation du site{' '}
+            Lors de l&apos;utilisation du site{' '}
             <a href='/' className='text-bittersweet font-bold'>
               https://house-of-ju.fr/
             </a>{' '}
-            , les informations suivantes peuvent être collectées : l'URL des
-            liens par lesquels l'utilisateur a accédé au site, le fournisseur
-            d'accès internet de l'utilisateur, ainsi que l'adresse de protocole
-            Internet (IP) de l'utilisateur.
+            , les informations suivantes peuvent être collectées : l&apos;URL
+            des liens par lesquels l&apos;utilisateur a accédé au site, le
+            fournisseur d&apos;accès internet de l&apos;utilisateur, ainsi que
+            l&apos;adresse de protocole Internet (IP) de l&apos;utilisateur.
           </p>
           <p>
             En tout état de cause, Julia Santin ne collecte des informations
-            personnelles concernant l'utilisateur que lorsque cela est
+            personnelles concernant l&apos;utilisateur que lorsque cela est
             nécessaire pour certains services proposés par le site{' '}
             <a href='/' className='text-bittersweet font-bold'>
               https://house-of-ju.fr/
             </a>{' '}
-            . L'utilisateur fournit ces informations en toute connaissance de
-            cause, notamment lorsqu'il les saisit lui-même. Il est alors précisé
-            à l'utilisateur du site{' '}
-            <a href='/' className='text-bittersweet font-bold'>
-              https://house-of-ju.fr/
-            </a>{' '}
-            si la fourniture de ces informations est obligatoire ou non.
-          </p>
-          <p>
-            Conformément aux dispositions des articles 38 et suivants de la loi
-            78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et
-            aux libertés, tout utilisateur dispose d’un droit d’accès, de
-            rectification et d’opposition aux données personnelles le
-            concernant, en effectuant sa demande écrite et signée, accompagnée
-            d’une copie du titre d’identité avec signature du titulaire de la
-            pièce, en précisant l’adresse à laquelle la réponse doit être
-            envoyée.
-          </p>
-          <p>
-            Aucune information personnelle de l’utilisateur du site{' '}
-            <a href='/' className='text-bittersweet font-bold'>
-              https://house-of-ju.fr/
-            </a>{' '}
-            n’est publiée à l’insu de l’utilisateur, échangée, transférée, cédée
-            ou vendue sur un support quelconque à des tiers. Seule l’hypothèse
-            du rachat de Julia Santin et de ses droits permettrait la
-            transmission des dites informations à l’éventuel acquéreur qui
-            serait à son tour tenu de la même obligation de conservation et de
-            modification des données vis à vis de l’utilisateur du site{' '}
-            <a href='/' className='text-bittersweet font-bold'>
-              https://house-of-ju.fr/
-            </a>
-            .
-          </p>
-          <p>
-            Les bases de données sont protégées par les dispositions de la loi
-            du 1er juillet 1998 transposant la directive 96/9 du 11 mars 1996
-            relative à la protection juridique des bases de données.
+            . L&apos;utilisateur fournit ces informations en toute connaissance
+            de cause, notamment lorsqu&apos;il les saisit lui-même. Il est alors
+            précisé à l&apos;utilisateur du site l&apos;obligation ou non de
+            fournir ces informations.
           </p>
         </div>
       </div>

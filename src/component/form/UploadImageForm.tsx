@@ -17,11 +17,7 @@ const UploadImageForm = (props: {
   pathName: string;
   setIsReload: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: {errors},
-  } = useForm<AddImageGallery>();
+  const {register, handleSubmit} = useForm<AddImageGallery>();
   const router = useRouter();
 
   const [previewUrl, setPreviewUrl] = useState<{src: string; name: string}>();
@@ -41,15 +37,15 @@ const UploadImageForm = (props: {
         formData.append('image_url', filename);
 
         const res = await addImageToGallery(formData);
-        console.log(res);
+
         if (res.status === 201) {
           toast.success('Image ajouté à la galerie');
           router.push(props.pathName);
           props.setIsReload(true);
           resetPreview();
         }
-      } catch (error) {
-        toast.error('Erreur lors du téléchargement');
+      } catch (e) {
+        return e;
       }
     }
   };
@@ -77,7 +73,7 @@ const UploadImageForm = (props: {
               type='file'
               id='file'
               accept='image/*'
-              className='cursor-pointer top-0 right-8 opacity-0 absolute  focus:outline-none focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-full'
+              className='cursor-pointer top-0 right-8 opacity-0 absolute  focus:outline-none focus:border-mona-lisa focus:ring-1 focus:ring-mona-lisa border-solid border-2 border-chardon rounded-md h-full'
               {...register('file', {required: true})}
               onChange={handleFileChange}
             />
@@ -102,7 +98,7 @@ const UploadImageForm = (props: {
               href={props.pathName}
               scroll={false}
               onClick={resetPreview}
-              className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-[#FFA79A] rounded-lg'
+              className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-mona-lisa rounded-lg'
             >
               Annuler
             </Link>
@@ -110,7 +106,7 @@ const UploadImageForm = (props: {
             <input
               type='submit'
               value='Valider'
-              className='cursor-pointer w-24 text-white h-10 bg-[#FFA79A] rounded-lg'
+              className='cursor-pointer w-24 text-white h-10 bg-mona-lisa rounded-lg'
             />
           </div>
         </div>

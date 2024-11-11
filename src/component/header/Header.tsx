@@ -1,34 +1,138 @@
 'use client';
-
-import {useIsMobile} from '@/hook/useIsMobile';
-import {userIsAdmin} from '@/utils/isAdmin';
-import {userIsConnected} from '@/utils/isConnected';
+import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {useEffect, useState} from 'react';
 import {FaUserLarge} from 'react-icons/fa6';
-import {RxHamburgerMenu} from 'react-icons/rx';
 import {SlLogout} from 'react-icons/sl';
 
-const Header = () => {
-  const isMobile = useIsMobile();
-  // const isConnected = userIsConnected();
-  // const isAdmin = userIsAdmin();
-  const [isConnected, setIsConnected] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+import {logoutAction} from '@/action/logoutAction';
+import {Appointment} from '@/services/appointmentService';
 
+import {Burger} from './Burger';
+
+type User = {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  address: string;
+  phone: string;
+  is_active: boolean;
+  appointments: Appointment[];
+  isAdmin: boolean;
+};
+
+const Header = (props: {userLogged: User}) => {
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
-    // Les états ne seront mis à jour qu'après le rendu initial du serveur
-    setIsConnected(userIsConnected());
-    setIsAdmin(userIsAdmin());
-  }, []);
+    const body = document.body;
+    if (isOpen) {
+      body.classList.add('overflow-hidden');
+    }
+    if (!isOpen) {
+      body.classList.remove('overflow-hidden');
+    }
+  }, [isOpen]);
+  const handleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+  const logout = async () => {
+    setIsOpen(false);
+    await logoutAction();
+  };
+  const isAdmin =
+    props.userLogged && props.userLogged.isAdmin ? '/admin' : '/profil';
+
   return (
-    <header className='bg-[#FFBCB2] text-white px-4 py-2'>
-      {isMobile ? (
+    <>
+      <header
+        className={classNames(
+          'sticky top-0 md:static transition-all h-24 z-50 left-0 right-0 duration-500 bg-melon text-white  md:px-4 md:py-2 flex  md:flex-row '
+        )}
+      >
+        {/* <div className='flex items-center justify-between'> */}
+        <Image
+          src={'/images/logojs.png'}
+          alt=''
+          width={513}
+          height={487}
+          className='h-20 self-center ml-4 w-20 fixed z-[60] md:static'
+        />
+        <Burger isOpen={isOpen} handleMenu={handleMenu} />
+        {/* </div> */}
+
+        <nav
+          className={classNames(
+            'fixed text-lg md:text-sm md:static md:flex md:flex-row w-full z-50 transition-all duration-500 top-0 left-0 right-0 items-center md:pt-0 h-screen md:h-auto backdrop-blur-lg md:justify-end lg:gap-32 xl:gap-52 2xl:gap-80 md:gap-28 bg-melon/70 md:bg-inherit',
+            {
+              'translate-x-full md:translate-x-0': !isOpen,
+              'translate-x-0': isOpen,
+            }
+          )}
+        >
+          <ul
+            className={classNames(
+              'flex flex-col lg:text-xl md:flex-row flex-wrap gap-5 items-center pt-36 md:pt-0'
+            )}
+          >
+            <li>
+              <a href='/' onClick={() => setIsOpen(false)}>
+                Accueil
+              </a>
+            </li>
+            <li>
+              <a href='/prestations' onClick={() => setIsOpen(false)}>
+                Beauté des ongles
+              </a>
+            </li>
+            <li>
+              <a href='/prise-de-rdv' onClick={() => setIsOpen(false)}>
+                Prise de rendez-vous
+              </a>
+            </li>
+            <li>
+              <a href='/galerie' onClick={() => setIsOpen(false)}>
+                Galerie
+              </a>
+            </li>
+            <li>
+              <a href='/' onClick={() => setIsOpen(false)}>
+                Contact
+              </a>
+            </li>
+          </ul>
+          <div className='flex gap-5 items-center md:pt-0  relative md:static z-50 justify-center md:justify-normal pt-9'>
+            {props.userLogged !== undefined && (
+              <>
+                <button aria-label='déconnexion' onClick={() => logout()}>
+                  <SlLogout className='text-[38px]' />
+                </button>
+                <Link aria-label='profil' onClick={() => setIsOpen(false)} href={isAdmin}>
+                  <FaUserLarge className='text-[38px]' />
+                </Link>{' '}
+              </>
+            )}
+            {props.userLogged === undefined && (
+              <>
+                <div className=' flex gap-4 flex-col md:flex-row'>
+                  <Link aria-label='connexion' href={'/connexion'} onClick={() => setIsOpen(false)}>
+                    Connexion
+                  </Link>
+                  <Link aria-label='inscription' href={'/inscription'} onClick={() => setIsOpen(false)}>
+                    Inscription
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        </nav>
+
+        {/* {isMobile ? (
         <nav className=' flex flex-row items-center justify-between'>
           <div className='flex text-3xl gap-3'>
-            {isConnected ? (
-              isAdmin ? (
+            {props.userLogged !== null ? (
+              props.userLogged.isAdmin ? (
                 <>
                   <Link href={'/admin'}>
                     <FaUserLarge />
@@ -80,7 +184,7 @@ const Header = () => {
                 <a href='/prestations'>Beauté des ongles</a>
               </li>
               <li>
-                <a href='/'>Prise de rendez-vous</a>
+                <a href='/prise-de-rdv'>Prise de rendez-vous</a>
               </li>
               <li>
                 <a href='/galerie'>Galerie</a>
@@ -96,12 +200,14 @@ const Header = () => {
             </div>
           ) : (
             <div className='flex text-3xl gap-3'>
-              {isConnected ? (
-                isAdmin ? (
+              {props.userLogged !== null ? (
+                 props.userLogged && props.userLogged.isAdmin ? (
                   <>
-                    <Link href={'/'}>
+                    <button onClick={() => logoutAction()}>
+                      {' '}
                       <SlLogout />
-                    </Link>
+                    </button>
+
                     <Link href={'/admin'}>
                       <FaUserLarge />
                     </Link>
@@ -125,8 +231,10 @@ const Header = () => {
             </div>
           )}
         </nav>
-      )}
-    </header>
+      )} */}
+        {/* Je ne sais pas comment tu fais ton logout, mais moi je te fais ça, idéalement, il faudrait faire autrement mais je ne sais pas comment tu as appris */}
+      </header>
+    </>
   );
 };
 

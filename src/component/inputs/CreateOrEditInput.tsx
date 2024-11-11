@@ -22,13 +22,13 @@ type CreateOrEditInputProps = {
 const CreateOrCreateOrEditInput = (props: CreateOrEditInputProps) => {
   return (
     <div className='flex flex-col'>
-      <label className='text-[#FE6A6A] font-bold' htmlFor={props.id}>
+      <label className='text-bittersweet font-bold' htmlFor={props.id}>
         *{props.label}
       </label>
       <input
         type={props.type}
         id={props.id} //TODO: modifier l'input duration (select) avec valeur: 30/60/90/120
-        className='focus:outline-none p-2 focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-8 w-96'
+        className='focus:outline-none p-2 focus:border-mona-lisa focus:ring-1 focus:ring-mona-lisa border-solid border-2 border-chardon rounded-md h-8 w-72 md:w-96'
         {...props.register(props.name, {required: true})}
         defaultValue={props.value}
       />

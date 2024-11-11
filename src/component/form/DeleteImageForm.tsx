@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import {usePathname, useRouter} from 'next/navigation';
@@ -36,8 +36,9 @@ const DeleteImageForm = (props: {
         <h3>Voulez vous vraiment supprimer cette photo ?</h3>
         <div className='flex justify-around pt-3'>
           <Link
-            href={pathName} scroll={false}
-            className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-[#FFA79A] rounded-lg'
+            href={pathName}
+            scroll={false}
+            className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-mona-lisa rounded-lg'
           >
             Annuler
           </Link>
@@ -45,7 +46,7 @@ const DeleteImageForm = (props: {
             onClick={() => {
               HandleDeleteImage();
             }}
-            className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-[#FFA79A] rounded-lg'
+            className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-mona-lisa rounded-lg'
           >
             Valider
           </button>

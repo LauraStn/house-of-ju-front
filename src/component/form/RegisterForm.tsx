@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
 import {Arima} from 'next/font/google';
 import Image from 'next/image';
 import React, {Fragment} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 
 import {registerUser} from '@/services/authService';
 
-import Input, {AuthProps} from '../Input';
+import Input, {AuthProps} from '../inputs/Input';
 
 export type FormFields = {
   type: string;
@@ -26,19 +26,19 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    // formState: {errors},
   } = useForm<AuthProps>();
 
   const onSubmit: SubmitHandler<AuthProps> = (data) =>
     registerUser(data).then((res) => {
-      console.log(res);
+     
 
       if (res.status === 201) {
-        toast.success(res.data.message)
+        toast.success(res.data);
       } else {
-        console.log(errors);
+        
 
-        toast.error(res.data.message)
+        toast.error('Error');
       }
     });
 
@@ -91,11 +91,11 @@ const RegisterForm = () => {
           height={669}
         />
       </div>
-      <div className='flex flex-col justify-center items-center gap-4 my-10 mx-auto p-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] rounded-lg w-[400px]'>
-        <h3 className='font-jimNightshade uppercase font-bold text-5xl text-[#FE6A6A]'>
+      <div className='flex flex-col justify-center items-center gap-4 my-10 mx-auto p-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] rounded-lg w-[350px] md:w-[400px]'>
+        <h3 className='font-jimNightshade uppercase font-bold text-5xl text-bittersweet'>
           Bienvenue
         </h3>
-        <p className='text-center font-arima text-xl text-[#FFA79A]'>
+        <p className='text-center font-arima text-xl text-mona-lisa'>
           Créer votre espace client pour prendre rendez-vous.
         </p>
         <form
@@ -117,13 +117,13 @@ const RegisterForm = () => {
             <input
               type='submit'
               value="S'enregistrer"
-              className='cursor-pointer w-72 text-white h-10 bg-[#FFA79A] rounded-lg'
+              className='cursor-pointer w-72 text-white h-10 bg-mona-lisa rounded-lg'
             />
           </div>
           <div className='mt-4 flex flex-col gap-3 justify-center items-center'>
-            <p className='text-[#FFA79A] w-72 text-center text-xs'>
+            <p className='text-mona-lisa w-72 text-center text-xs'>
               En vous inscrivant, vous acceptez notre{' '}
-              <a className=' text-[#FE6A6A] font-bold cursor-pointer'>
+              <a className=' text-bittersweet font-bold cursor-pointer'>
                 politique de confidentialité
               </a>{' '}
               et le traitement de vos données personnelles.

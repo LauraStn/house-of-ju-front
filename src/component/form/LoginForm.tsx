@@ -1,35 +1,50 @@
 'use client';
+import {setCookie} from 'cookies-next';
 import Image from 'next/image';
+import Link from 'next/link';
+import {usePathname, useSearchParams} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 import React, {Fragment} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
 
 import {loginUser} from '@/services/authService';
+import {getUserLogged} from '@/services/userService';
 
-import Input, {AuthProps} from '../Input';
-import {FormFields} from './RegisterForm';
+import Input, {AuthProps} from '../inputs/Input';
 import Modal from '../modals/Modal';
-import {useSearchParams, usePathname} from 'next/navigation';
+import {FormFields} from './RegisterForm';
 import SendMailReset from './SendMailReset';
-import Link from 'next/link';
 
 const LoginForm = () => {
   const params = useSearchParams();
   const pathName = usePathname();
-  const {
-    register,
-    handleSubmit,
-    formState: {errors},
-  } = useForm<AuthProps>();
+  const {register, handleSubmit} = useForm<AuthProps>();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<Pick<AuthProps, 'email' | 'password'>> = (
     data
   ) =>
-    loginUser(data).then((res) => {
+    loginUser(data).then(async (res) => {
       if (res.status === 201) {
-        toast.success('Login successfull');
-        window.localStorage.setItem('token', res.data.token.access_token);
-        window.localStorage.setItem('role', res.data.role);
+        toast.success('Connecté ! Redirection vers le profile');
+        setCookie('cookieKey', res.data.token.access_token);
+        const token = res.data.token.access_token;
+        if (!token) {
+          //   Gerer l'erreur quand le token est introuvable genre affiché un message dans un toast "Connexion impossible"
+          //  Peut etre devoir gerer le retour dans le back, ca evite de surcharger le front en logique
+          return toast.error('Connexion impossible');
+        }
+        const user = await getUserLogged({token: token});
+        if (user.data.isAdmin) {
+          return router.push('/admin');
+        }
+        return router.push('/profil');//TODO verif du reload de header a la connexion
+        // DONE A tester , je n'ai pas les mdp de admin
+        // const user = await getUserLogged({token: token});
+        // if(!user.data.isAdmin){
+        //   router.push(`profil`)
+        // }
       } else {
         toast.error('Identifiants incorrect');
       }
@@ -59,11 +74,11 @@ const LoginForm = () => {
           height={669}
         />
       </div>
-      <div className='flex flex-col justify-center items-center gap-4 my-10 mx-auto p-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] rounded-lg w-[400px]'>
-        <h3 className='font-jimNightshade uppercase font-bold text-4xl text-[#FE6A6A]'>
+      <div className='flex flex-col justify-center items-center gap-4 my-10 mx-auto p-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] rounded-lg w-[350px] md:w-[400px]'>
+        <h3 className='font-jimNightshade uppercase font-bold text-3xl text-bittersweet'>
           Ravie de vous revoir
         </h3>
-        <p className='text-center font-arima text-xl text-[#FFA79A]'>
+        <p className='text-center font-arima text-xl text-mona-lisa'>
           Connectez vous à espace client pour gérer vos rendez-vous.
         </p>
         <form
@@ -85,13 +100,13 @@ const LoginForm = () => {
             <input
               type='submit'
               value='Se connecter'
-              className='cursor-pointer w-72 text-white h-10 bg-[#FFA79A] rounded-lg'
+              className='cursor-pointer w-72 text-white h-10 bg-mona-lisa rounded-lg'
             />
           </div>
           <div className='mt-4 flex flex-col gap-3 justify-center items-center'>
-            <p className='text-[#FFA79A]'>Mot de passe oublié ?</p>
+            <p className='text-mona-lisa'>Mot de passe oublié ?</p>
             <Link href={`${pathName}?reset=1`} scroll={false}>
-              <p className='text-[#FE6A6A] cursor-pointer'>
+              <p className='text-bittersweet cursor-pointer'>
                 Réinitialiser le mot de passe
               </p>
             </Link>

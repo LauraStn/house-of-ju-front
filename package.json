@@ -13,6 +13,8 @@
     "@typescript-eslint/eslint-plugin": "^8.11.0",
     "axios": "^1.7.7",
     "classnames": "^2.5.1",
+    "cookies-next": "^4.3.0",
+    "date-fns": "^4.1.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
     "next": "14.2.14",

@@ -1,24 +1,36 @@
-import { CreateOrEditNailServiceProps } from '@/component/CreateOrEditInput';
 import axios from 'axios';
 
+//TODO refactoriser avec cookies
+import {CreateOrEditNailServiceProps} from '@/component/inputs/CreateOrEditInput';
+
+// export async function getAllNailServices() {
+//   const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/all`;
+
+//   const axiosConfig = {
+//     headers: {
+//       'content-type': 'application/json',
+//     },
+//   };
+//   return axios
+//     .get(url, axiosConfig)
+//     .then((res) => {
+//       return res.data;
+//     })
+//     .catch((e) => {
+//       return e;
+//     });
+// }
 
 export async function getAllNailServices() {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}nail-service/all`;
-
-  const axiosConfig = {
-    headers: {
-      'content-type': 'application/json',
-    },
-  };
-
-  return axios
-    .get(url, axiosConfig)
-    .then((res) => {
-      return res.data;
-    })
-    .catch((e) => {
-      return e;
-    });
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}nail-service/all`,
+    {
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  );
+  return res.data;
 }
 
 export async function createNailService(

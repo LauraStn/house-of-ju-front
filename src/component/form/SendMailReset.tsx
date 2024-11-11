@@ -1,20 +1,18 @@
 'use client';
-import {sendResetEmail} from '@/services/authService';
-import React from 'react';
-import {useForm, SubmitHandler} from 'react-hook-form';
-import {toast} from 'react-toastify';
-import {AuthProps} from '../Input';
-import {useRouter} from 'next/navigation';
-import {RxCross2} from 'react-icons/rx';
 import Link from 'next/link';
+import {useRouter} from 'next/navigation';
+import React from 'react';
+import {SubmitHandler, useForm} from 'react-hook-form';
+import {RxCross2} from 'react-icons/rx';
+import {toast} from 'react-toastify';
+
+import {sendResetEmail} from '@/services/authService';
+
+import {AuthProps} from '../inputs/Input';
 
 const SendMailReset = (props: {pathName: string}) => {
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    formState: {errors},
-  } = useForm<AuthProps>();
+  const {register, handleSubmit} = useForm<AuthProps>();
 
   const onSubmit: SubmitHandler<Pick<AuthProps, 'email'>> = (data) =>
     sendResetEmail(data).then((res) => {
@@ -27,7 +25,11 @@ const SendMailReset = (props: {pathName: string}) => {
     });
   return (
     <div className='text-bittersweet w-[450px] flex flex-col bg-white p-7 rounded-xl shadow-2xl'>
-      <Link href={props.pathName} scroll={false} className='cursor-pointer self-end'>
+      <Link
+        href={props.pathName}
+        scroll={false}
+        className='cursor-pointer self-end'
+      >
         <RxCross2 />
       </Link>
       <div className='p-4 flex flex-col justify-center items-center gap-2'>
@@ -44,7 +46,7 @@ const SendMailReset = (props: {pathName: string}) => {
           >
             <div className='flex flex-col'>
               <label
-                className='text-[#FE6A6A] font-arima'
+                className='text-bittersweet font-arima'
                 htmlFor='description'
               >
                 *Email
@@ -52,7 +54,7 @@ const SendMailReset = (props: {pathName: string}) => {
               <input
                 type='email'
                 id='email'
-                className='focus:outline-none p-2 focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-8 w-72'
+                className='focus:outline-none p-2 focus:border-mona-lisa focus:ring-1 focus:ring-mona-lisa border-solid border-2 border-chardon rounded-md h-8 w-72'
                 {...register('email', {required: true})}
               />
             </div>
@@ -61,7 +63,7 @@ const SendMailReset = (props: {pathName: string}) => {
               <input
                 type='submit'
                 value='Envoyer'
-                className='cursor-pointer w-72 text-white h-10 bg-[#FFA79A] rounded-lg'
+                className='cursor-pointer w-72 text-white h-10 bg-mona-lisa rounded-lg'
               />
             </div>
             <div className='mt-4 flex flex-col gap-3 justify-center items-center'></div>

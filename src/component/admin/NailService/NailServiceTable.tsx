@@ -48,16 +48,16 @@ const NailServiceAdmin = () => {
         <div>
           <div className='flex flex-col gap-4 mx-5 my-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-8 rounded-lg'>
             <div className='flex flex-col gap-6 pb-5'>
-              <h2 className='text-3xl font-jimNightshade uppercase text-[#FE6A6A]'>
+              <h2 className='text-3xl font-jimNightshade uppercase text-bittersweet'>
                 Gestion des Prestations
               </h2>
               <button
                 onClick={toggleTableVisibility}
-                className='py-2 bg-[#FFBCB2] self-end w-32 text-white rounded hover:bg-[#FE6A6A] transition duration-300'
+                className='py-2 bg-melon self-end w-32 text-white rounded hover:bg-bittersweet transition duration-300'
               >
                 {isTableVisible ? 'Masquer' : 'Afficher'}
               </button>
-              <p className='text-[#FE6A6A] text-right'>
+              <p className='text-bittersweet text-right'>
                 Cliquez pour afficher/masquer les prestations
               </p>
             </div>
@@ -71,7 +71,7 @@ const NailServiceAdmin = () => {
               )}
             >
               <Link href={`${pathName}?create=1`} scroll={false}>
-                <button className='ml-2 self-start py-2 bg-[#FE6A6A] w-48 mb-4 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                <button className='ml-2 self-start py-2 bg-bittersweet w-48 mb-4 text-white rounded hover:bg-melon transition duration-300'>
                   Ajouter une prestation
                 </button>
               </Link>
@@ -96,17 +96,17 @@ const NailServiceAdmin = () => {
         <div>
           <div className='flex flex-col gap-4 mx-5 my-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-8 rounded-lg'>
             <div className='flex justify-between'>
-              <h2 className='text-3xl font-jimNightshade uppercase text-[#FE6A6A]'>
+              <h2 className='text-3xl font-jimNightshade uppercase text-bittersweet'>
                 Gestion des Prestations
               </h2>
               <div className='flex flex-col items-end gap-4'>
                 <button
                   onClick={toggleTableVisibility}
-                  className='py-2 bg-[#FFBCB2] w-32 text-white rounded hover:bg-[#FE6A6A] transition duration-300'
+                  className='py-2 bg-melon w-32 text-white rounded hover:bg-bittersweet transition duration-300'
                 >
                   {isTableVisible ? 'Masquer' : 'Afficher'}
                 </button>
-                <p className='text-[#FE6A6A] text-right'>
+                <p className='text-bittersweet text-right'>
                   Cliquez pour afficher/masquer le tableau
                 </p>
               </div>
@@ -121,12 +121,12 @@ const NailServiceAdmin = () => {
               )}
             >
               <Link href={`${pathName}?create=1`} scroll={false}>
-                <button className='self-start py-2 bg-[#FE6A6A] w-48 text-white rounded hover:bg-[#FFBCB2] transition duration-300'>
+                <button className='self-start py-2 bg-bittersweet w-48 text-white rounded hover:bg-melon transition duration-300'>
                   Ajouter une prestation
                 </button>
               </Link>
               <table className='w-full sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5'>
-                <thead className='bg-[#FFBCB2] text-white'>
+                <thead className='bg-melon text-white'>
                   <tr className='sm:table-row hidden'>
                     <th className='p-3 text-left'>Nom</th>
                     <th className='p-3 text-left max-w-16'>Description</th>

@@ -1,14 +1,14 @@
 'use client';
-
+import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {useEffect, useState} from 'react';
 import {FaUserLarge} from 'react-icons/fa6';
 import {SlLogout} from 'react-icons/sl';
+
 import {logoutAction} from '@/action/logoutAction';
 import {Appointment} from '@/services/appointmentService';
-import classNames from 'classnames';
-import {useIsMobile} from '@/hook/useIsMobile';
+
 import {Burger} from './Burger';
 
 type User = {
@@ -24,13 +24,7 @@ type User = {
 };
 
 const Header = (props: {userLogged: User}) => {
-  const isMobile = useIsMobile();
-  // const isConnected = userIsConnected();
-  // const isAdmin = userIsAdmin();
-  // const [isConnected, setIsConnected] = useState(false);
-  // const [isAdmin, setIsAdmin] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
   useEffect(() => {
     const body = document.body;
     if (isOpen) {
@@ -40,7 +34,6 @@ const Header = (props: {userLogged: User}) => {
       body.classList.remove('overflow-hidden');
     }
   }, [isOpen]);
-  //  Je ne sais pas si tu auras encore besoin de tes states mais comme tu m'as dis que tu utilisais isAdmin a plusieurs endroit
   const handleMenu = () => {
     setIsOpen((prev) => !prev);
   };
@@ -71,7 +64,7 @@ const Header = (props: {userLogged: User}) => {
 
         <nav
           className={classNames(
-            'fixed text-lg  md:text-sm md:static md:flex md:flex-row w-full z-50 transition-all duration-500 top-0 left-0 right-0 items-center  md:pt-0 h-screen md:h-auto backdrop-blur-lg md:justify-end xl:gap-52 lg:gap-32 2xl:gap-80 md:gap-28 bg-melon/70 md:bg-inherit',
+            'fixed text-lg md:text-sm md:static md:flex md:flex-row w-full z-50 transition-all duration-500 top-0 left-0 right-0 items-center md:pt-0 h-screen md:h-auto backdrop-blur-lg md:justify-end lg:gap-32 xl:gap-52 2xl:gap-80 md:gap-28 bg-melon/70 md:bg-inherit',
             {
               'translate-x-full md:translate-x-0': !isOpen,
               'translate-x-0': isOpen,
@@ -112,10 +105,10 @@ const Header = (props: {userLogged: User}) => {
           <div className='flex gap-5 items-center md:pt-0  relative md:static z-50 justify-center md:justify-normal pt-9'>
             {props.userLogged !== undefined && (
               <>
-                <button onClick={() => logout()}>
+                <button aria-label='déconnexion' onClick={() => logout()}>
                   <SlLogout className='text-[38px]' />
                 </button>
-                <Link onClick={() => setIsOpen(false)} href={isAdmin}>
+                <Link aria-label='profil' onClick={() => setIsOpen(false)} href={isAdmin}>
                   <FaUserLarge className='text-[38px]' />
                 </Link>{' '}
               </>
@@ -123,10 +116,10 @@ const Header = (props: {userLogged: User}) => {
             {props.userLogged === undefined && (
               <>
                 <div className=' flex gap-4 flex-col md:flex-row'>
-                  <Link href={'/connexion'} onClick={() => setIsOpen(false)}>
+                  <Link aria-label='connexion' href={'/connexion'} onClick={() => setIsOpen(false)}>
                     Connexion
                   </Link>
-                  <Link href={'/inscription'} onClick={() => setIsOpen(false)}>
+                  <Link aria-label='inscription' href={'/inscription'} onClick={() => setIsOpen(false)}>
                     Inscription
                   </Link>
                 </div>

@@ -46,7 +46,7 @@ export const CustomCalendar = (props: PropsCalendar) => {
   const dateSelected = searchParams.get('date');
   const hours = getConsultationsRange(
     Number(props.nail_service.duration) || 60
-  ); // Utilise des paramètres pour calculé les crénaus de départ et d'arrivé et retourne les heures en format string
+  ); // Utilise des paramètres pour calculé les créneaux de départ et d'arrivé et retourne les heures en format string
 
   const days = eachDayOfInterval({
     // eachDayOfInterval renvoie tous les jours donné dans un interval
@@ -143,9 +143,9 @@ export const CustomCalendar = (props: PropsCalendar) => {
               scroll={false}
               onClick={() => handleShowTerm(day)}
               className={classNames('px-2', {
-                '!text-[#FE6A6A]/30': isBefore(day, today), // Date antérieures
-                '!text-[#FE6A6A]': !isBefore(day, today), // Date  a venir
-                '!text-[#FE6A6A]/20': isWeekend(day), // Les weekend
+                '!text-bittersweet/30': isBefore(day, today), // Date antérieures
+                '!text-bittersweet': !isBefore(day, today), // Date  a venir
+                '!text-bittersweet/20': isWeekend(day), // Les weekend
                 'bg-bittersweet rounded-full !text-white': isToday(day), // Date du jour
               })}
             >
@@ -204,7 +204,7 @@ const DayModal = (props: {
     <>
       <div
         className={classNames(
-          'z-10 w-full rounded-xl text-white text-center pt-2  bg-[#FFBCB2] overflow-hidden transition-all duration-700',
+          'z-10 w-full rounded-xl text-white text-center pt-2  bg-melon overflow-hidden transition-all duration-700',
           {
             'max-h-0 ease-out-expo invisible opacity-0':
               props.dateToOpen === null, // Si les date sont différentes
@@ -237,7 +237,7 @@ const DayModal = (props: {
                   onClick={() => handleConfirmation(hour.hours)}
                   key={hoursIndex}
                   className={classNames('rounded-lg px-4 py-2', {
-                    'bg-[#FE6A6A] block': !hasEvent,
+                    'bg-bittersweet block': !hasEvent,
                     'hidden ': hasEvent,
                   })}
                 >
@@ -260,13 +260,13 @@ const DayModal = (props: {
                   <div className='flex gap-4 items-center justify-center'>
                     <button
                       onClick={() => props.createTerm(props.day, props.hour)}
-                      className='bg-[#FE6A6A] rounded-lg py-2 px-4 text-white'
+                      className='bg-bittersweet rounded-lg py-2 px-4 text-white'
                     >
                       Valider ce RDV{' '}
                     </button>
                     <button
                       onClick={() => props.setConfirmation(false)}
-                      className='bg-[#FFBCB2] rounded-lg py-2 px-4'
+                      className='bg-melon rounded-lg py-2 px-4'
                     >
                       Annuler
                     </button>
@@ -289,7 +289,7 @@ const ButtonCalendar = (props: {
     <button
       type='button'
       onClick={props.onClick}
-      className='-my-1.5 flex flex-none items-center justify-center p-1.5 text-[#FE6A6A] hover:text-persian-plum'
+      className='-my-1.5 flex flex-none items-center justify-center p-1.5 text-bittersweet hover:text-persian-plum'
     >
       <span>{props.label}</span>
     </button>

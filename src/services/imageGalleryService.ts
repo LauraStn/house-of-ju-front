@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
-
+//TODO refactoriser avec cookies
 export async function getAllImagesGallery() {
   const url = `${process.env.NEXT_PUBLIC_API_URL}image-gallery/all`;
 

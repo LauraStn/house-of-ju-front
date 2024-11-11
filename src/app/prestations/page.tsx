@@ -15,7 +15,6 @@ import ongle5 from '../../../public/images/ongle5.webp';
 import ongle6 from '../../../public/images/ongle6.webp';
 
 export default function Services() {
-  
   const [nailServiceList, setNailServiceList] = useState<NailServiceProps[]>(
     []
   );
@@ -29,11 +28,11 @@ export default function Services() {
       });
   }, []);
   const nailImages = [ongle1, ongle2, ongle3, ongle4, ongle5, ongle6];
-  
+
   return (
     <div>
-      <div className='bg-nails1 md:flex md:justify-center md:items-center bg-no-repeat bg-cover h-[300px] py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>
-        <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-[#FFBCB2]'>
+      <div className='bg-nail-service md:flex md:justify-center md:items-center bg-no-repeat bg-cover h-[300px] py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>
+        <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-melon'>
           <Image
             src={'/images/main5.webp'}
             alt={''}
@@ -41,7 +40,7 @@ export default function Services() {
             height={302}
             className='w-32'
           />
-          <h2 className='font-jimNightshade uppercase text-2xl text-[#FE6A6A]'>
+          <h2 className='font-jimNightshade uppercase text-2xl text-bittersweet'>
             Beauté des ongles
           </h2>
         </div>

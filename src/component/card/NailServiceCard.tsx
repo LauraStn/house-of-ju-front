@@ -24,12 +24,12 @@ const NailServiceCard = (
       }`}
     >
       <div className='gap-8 flex flex-col lg:w-96'>
-        <h2 className='text-[#FE6A6A] font-jimNightshade uppercase text-3xl'>
+        <h2 className='text-bittersweet font-jimNightshade uppercase text-3xl'>
           {props.name}
         </h2>
-        <p className='text-[#FE6A6A]'>Durée: {props.duration} min</p>
-        <p className='text-[#FFA79A]'>{props.description}</p>
-        <p className='text-[#FE6A6A] text-right text-xl'>
+        <p className='text-bittersweet'>Durée: {props.duration} min</p>
+        <p className='text-mona-lisa'>{props.description}</p>
+        <p className='text-bittersweet text-right text-xl'>
           Prix: {props.price}€
         </p>
       </div>

@@ -4,7 +4,7 @@ export default function MentionsLegales() {
   return (
     <div>
       <div className='bg-cgu md:flex md:justify-center md:items-center bg-no-repeat bg-cover h-[300px] py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>
-        <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-[#FFBCB2]'>
+        <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-melon'>
           <Image
             src={'/images/paper-pen.webp'}
             alt={''}
@@ -12,7 +12,7 @@ export default function MentionsLegales() {
             height={302}
             className='w-32'
           />
-          <h2 className='font-jimNightshade uppercase text-4xl text-[#FE6A6A]'>
+          <h2 className='font-jimNightshade uppercase text-4xl text-bittersweet'>
             Mentions légales
           </h2>
         </div>
@@ -21,7 +21,7 @@ export default function MentionsLegales() {
       <div className='text-mona-lisa md:mx-auto flex flex-col gap-8 mx-5 my-10 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-8 rounded-lg'>
         <div className='flex flex-col gap-4'>
           {' '}
-          <h3 className='font-jimNightshade uppercase text-3xl text-[#FE6A6A]'>
+          <h3 className='font-jimNightshade uppercase text-3xl text-bittersweet'>
             Éditeur du site :
           </h3>{' '}
           <p>
@@ -57,7 +57,7 @@ export default function MentionsLegales() {
           </p>
         </div>
         <div className='flex flex-col gap-4'>
-          <h3 className='font-jimNightshade uppercase text-3xl text-[#FE6A6A]'>
+          <h3 className='font-jimNightshade uppercase text-3xl text-bittersweet'>
             Conditions générales d&apos;utilisation du site :
           </h3>
           <p>
@@ -89,7 +89,7 @@ export default function MentionsLegales() {
           </p>
         </div>
         <div className='flex flex-col gap-4'>
-          <h3 className='font-jimNightshade uppercase text-3xl text-[#FE6A6A]'>
+          <h3 className='font-jimNightshade uppercase text-3xl text-bittersweet'>
             Limitations contractuelles sur les données techniques :
           </h3>
 
@@ -103,7 +103,7 @@ export default function MentionsLegales() {
           </p>
         </div>{' '}
         <div className='flex flex-col gap-4'>
-          <h3 className='font-jimNightshade uppercase text-3xl text-[#FE6A6A]'>
+          <h3 className='font-jimNightshade uppercase text-3xl text-bittersweet'>
             Description des services fournis :
           </h3>
           <p>
@@ -135,7 +135,7 @@ export default function MentionsLegales() {
           </p>
         </div>
         <div className='flex flex-col gap-4'>
-          <h3 className='font-jimNightshade uppercase text-3xl text-[#FE6A6A]'>
+          <h3 className='font-jimNightshade uppercase text-3xl text-bittersweet'>
             Propriété intellectuelle :
           </h3>
           <p>
@@ -161,7 +161,7 @@ export default function MentionsLegales() {
           </p>
         </div>
         <div className='flex flex-col gap-4'>
-          <h3 className='font-jimNightshade uppercase text-3xl text-[#FE6A6A]'>
+          <h3 className='font-jimNightshade uppercase text-3xl text-bittersweet'>
             Gestion des données personnelles :
           </h3>
           <p>

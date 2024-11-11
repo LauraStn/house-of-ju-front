@@ -1,9 +1,10 @@
-import {UserAppointmentProps} from '@/app/profil/page';
 import React from 'react';
 import {FaRegCalendarAlt} from 'react-icons/fa';
 import {FaMoneyBillWave} from 'react-icons/fa6';
 import {IoHourglassOutline} from 'react-icons/io5';
 import {TbClockHour4} from 'react-icons/tb';
+
+import {UserAppointmentProps} from '@/app/profil/page';
 
 const AppointmentCard = (props: UserAppointmentProps) => {
   return (

@@ -22,13 +22,13 @@ type inputProps = {
 const Input = (props: inputProps) => {
   return (
     <div className='flex flex-col'>
-      <label className='text-[#FE6A6A] font-arima' htmlFor={props.id}>
+      <label className='text-bittersweet font-arima' htmlFor={props.id}>
         *{props.label}
       </label>
       <input
         type={props.type}
         id={props.id}
-        className='focus:outline-none p-2 focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-8 w-72'
+        className='focus:outline-none p-2 focus:border-mona-lisa focus:ring-1 focus:ring-mona-lisa border-solid border-2 border-chardon rounded-md h-8 w-72'
         {...props.register(props.name, {required: true})}
       />
     </div>

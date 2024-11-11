@@ -46,7 +46,7 @@ const SendMailReset = (props: {pathName: string}) => {
           >
             <div className='flex flex-col'>
               <label
-                className='text-[#FE6A6A] font-arima'
+                className='text-bittersweet font-arima'
                 htmlFor='description'
               >
                 *Email
@@ -54,7 +54,7 @@ const SendMailReset = (props: {pathName: string}) => {
               <input
                 type='email'
                 id='email'
-                className='focus:outline-none p-2 focus:border-[#FFA79A] focus:ring-1 focus:ring-[#FFA79A] border-solid border-2 border-[#FFF2F0] rounded-md h-8 w-72'
+                className='focus:outline-none p-2 focus:border-mona-lisa focus:ring-1 focus:ring-mona-lisa border-solid border-2 border-chardon rounded-md h-8 w-72'
                 {...register('email', {required: true})}
               />
             </div>
@@ -63,7 +63,7 @@ const SendMailReset = (props: {pathName: string}) => {
               <input
                 type='submit'
                 value='Envoyer'
-                className='cursor-pointer w-72 text-white h-10 bg-[#FFA79A] rounded-lg'
+                className='cursor-pointer w-72 text-white h-10 bg-mona-lisa rounded-lg'
               />
             </div>
             <div className='mt-4 flex flex-col gap-3 justify-center items-center'></div>

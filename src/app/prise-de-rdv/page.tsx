@@ -1,13 +1,14 @@
 import Image from 'next/image';
-import {Fragment, useEffect, useState} from 'react';
+import {Fragment} from 'react';
 
 import CalendarNailServiceCard from '@/component/card/CalendarNailServiceCard';
 import {NailServiceProps} from '@/component/card/NailServiceCard';
-import {getAllNailServices} from '@/services/nailService';
 import {
   Appointment as AppointmentProps,
   getAppointment,
 } from '@/services/appointmentService';
+import {getAllNailServices} from '@/services/nailService';
+
 const getData = async () => {
   const nailServiceList: NailServiceProps[] = await getAllNailServices();
   const appointmentList: AppointmentProps[] = await getAppointment();
@@ -16,12 +17,14 @@ const getData = async () => {
     appointmentList: appointmentList,
   };
 };
+
 export default async function Appointment() {
   const data = await getData();
+
   return (
     <div>
       <div className='bg-rdv md:flex md:justify-center md:items-center bg-no-repeat bg-cover h-[300px] py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>
-        <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-[#FE6A6A]'>
+        <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-bittersweet'>
           <Image
             src={'/images/gallery-hands.webp'}
             alt={''}
@@ -29,7 +32,7 @@ export default async function Appointment() {
             height={382}
             className='w-52'
           />
-          <h2 className='font-jimNightshade uppercase text-2xl text-[#FE6A6A]'>
+          <h2 className='font-jimNightshade uppercase text-2xl text-bittersweet'>
             Prendre rendez-vous
           </h2>
         </div>

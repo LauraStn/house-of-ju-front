@@ -1,12 +1,8 @@
-import AppointmentCard from '@/component/card/AppointmentCard';
-import {getUserAppointment} from '@/services/appointmentService';
 import Image from 'next/image';
 import {Fragment} from 'react';
-import {FaMoneyBillWave, FaRegCalendarAlt} from 'react-icons/fa';
-import {GiMoneyStack, GiReceiveMoney} from 'react-icons/gi';
-import {HiMiniCurrencyEuro} from 'react-icons/hi2';
-import {IoHourglassOutline} from 'react-icons/io5';
-import {TbClockHour4} from 'react-icons/tb';
+
+import AppointmentCard from '@/component/card/AppointmentCard';
+import {getUserAppointment} from '@/services/appointmentService';
 // import {useEffect} from 'react';
 export type UserAppointmentProps = {
   id: number;
@@ -26,12 +22,11 @@ const getData = async () => {
 };
 export default async function Profil() {
   const data = await getData();
-  console.log(data.userAppointment);
 
   // useEffect(() => {
   //   getUserAppointment()
   //     .then((res) => {
-  //       console.log(res);
+  //     
   //     })
   //     .catch((e) => {
   //       return e;
@@ -40,7 +35,7 @@ export default async function Profil() {
   return (
     <div>
       <div className='bg-profil md:flex md:justify-center md:items-center bg-no-repeat bg-cover h-[300px] py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>
-        <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-[#FE6A6A]'>
+        <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-bittersweet'>
           <Image
             src={'/images/gallery-hands.webp'}
             alt={''}
@@ -48,14 +43,14 @@ export default async function Profil() {
             height={382}
             className='w-52'
           />
-          <h2 className='font-jimNightshade uppercase text-2xl text-[#FE6A6A]'>
+          <h2 className='font-jimNightshade uppercase text-2xl text-bittersweet'>
             Mon profil
           </h2>
         </div>
       </div>
       <div className='m-5 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-10 md:mx-24 rounded-md justify-around items-center flex flex-col md:flex-row pb-10'>
         <div>
-          <h2 className='text-[#FE6A6A] font-jimNightshade uppercase text-3xl pb-10'>
+          <h2 className='text-bittersweet font-jimNightshade uppercase text-3xl pb-10'>
             mes rendez-vous
           </h2>
           <div className='flex flex-col gap-5'>
@@ -113,7 +108,7 @@ export default async function Profil() {
           </div>
         </div>
         <div>
-          <h2 className='text-[#FE6A6A] font-jimNightshade uppercase mt-24 text-3xl pb-10'>
+          <h2 className='text-bittersweet font-jimNightshade uppercase mt-24 text-3xl pb-10'>
             mes informations
           </h2>
         </div>

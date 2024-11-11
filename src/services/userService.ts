@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-
+//TODO refactoriser avec cookies
 export async function getUserLogged(params:{token:string}) {
   const url = `${process.env.NEXT_PUBLIC_API_URL}user/one`;
 
@@ -14,7 +14,7 @@ export async function getUserLogged(params:{token:string}) {
   return axios
     .get(url, axiosConfig)
     .then((res) => {
-      console.log("ici");
+     
       
       return res;
     })

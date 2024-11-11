@@ -1,9 +1,7 @@
-'use client'
+'use client';
 import classNames from 'classnames';
 import Link from 'next/link';
-import {
-  ReadonlyURLSearchParams,
-} from 'next/navigation';
+import {ReadonlyURLSearchParams} from 'next/navigation';
 import React, {useState} from 'react';
 import {BsFillTrash3Fill} from 'react-icons/bs';
 import {FaPencilAlt} from 'react-icons/fa';
@@ -26,19 +24,22 @@ const NailServiceMobileCard = (
     <>
       <div
         key={props.id}
-        className='m-2 shadow-sm shadow-[#FE6A6A] p-5 md:mx-24 rounded-md flex flex-col lg:flex-row'
+        className='m-2 shadow-sm shadow-bittersweet p-5 md:mx-24 rounded-md flex flex-col lg:flex-row'
       >
         <div className='gap-2 flex flex-col lg:w-96'>
-          <h2 className='text-[#FE6A6A] font-bold text-lg'>{props.name}</h2>
+          <h2 className='text-bittersweet font-bold text-lg'>{props.name}</h2>
           <div className='flex justify-between'>
             <button
               onClick={toggleExpand}
-              className='text-[#FFA79A] hover:underline self-start'
+              className='text-mona-lisa hover:underline self-start'
             >
               {isExpanded ? 'Voir moins' : 'Voir plus'}
             </button>
-            <div className='flex gap-4 cursor-pointer text-[#FE6A6A]'>
-              <Link href={`${props.pathName}?delete=${props.id}`} scroll={false}>
+            <div className='flex gap-4 cursor-pointer text-bittersweet'>
+              <Link
+                href={`${props.pathName}?delete=${props.id}`}
+                scroll={false}
+              >
                 <BsFillTrash3Fill className='hover:text-red-500' />
               </Link>
               <Link href={`${props.pathName}?edit=${props.id}`} scroll={false}>
@@ -49,7 +50,7 @@ const NailServiceMobileCard = (
         </div>
         <div
           className={classNames(
-            'transition-max-height overflow-hidden duration-500 mt-4 text-[#FE6A6A]',
+            'transition-max-height overflow-hidden duration-500 mt-4 text-bittersweet',
             {
               'max-h-0 ease-out-expo': !isExpanded,
               'h-auto max-h-[1000px]': isExpanded,

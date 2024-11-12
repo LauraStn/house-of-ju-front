@@ -28,7 +28,7 @@ export const Burger = (props: Props) => {
   return (
     <div
       className={classNames(
-        'fixed top-14 flex h-[40px] flex-col gap-2 right-7 w-10 ml-auto self-center md:hidden cursor-pointer z-[60] min-[320px]:scale-[.8] sm:scale-100 -translate-y-4',
+        ' sticky top-24 flex h-[40px] flex-col gap-2 right-7 w-10 ml-auto self-center md:hidden cursor-pointer z-[60] min-[320px]:scale-[.8] sm:scale-100 -translate-y-4',
         {
           'gap-[1px]': props.isOpen,
         }

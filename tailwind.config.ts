@@ -6,6 +6,8 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'home-hands': "url('/images/woman-hands.webp')",
+        'home': "url('/images/home4.jpg')",
+
         'home-flower': "url('/images/flowers.jpg')",
         'nail-service': "url('/images/nails1.webp')",
         'admin': "url('/images/admin2.webp')",

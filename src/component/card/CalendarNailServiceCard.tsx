@@ -1,22 +1,17 @@
 'use client';
 import classNames from 'classnames';
 import Link from 'next/link';
-import {usePathname, useSearchParams} from 'next/navigation';
+import {usePathname} from 'next/navigation';
 import React, {useState} from 'react';
-import {RxCross2} from 'react-icons/rx';
 
 import {Appointment} from '@/services/appointmentService';
 
-import {CustomCalendar} from '../calendar/CustomCalendar';
-import Modal from '../modals/Modal';
 import {NailServiceProps} from './NailServiceCard';
 
 type Props = {nail_service: NailServiceProps; appointment: Appointment[]};
-const CalendarNailServiceCard = (props: Props) => {
+const AppointmentNailServiceCard = (props: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const pathname = usePathname();
-  const params = useSearchParams();
-  const calendarIsOpen = params.has('calendar');
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
@@ -61,8 +56,9 @@ const CalendarNailServiceCard = (props: Props) => {
             </div>
             <div className=''>
               <Link
-                href={`${pathname}?calendar=1`}
+                href={`${pathname}?calendar=${props.nail_service.id}`}
                 className=' bg-bittersweet text-white rounded-xl px-5 py-2 h-6 hover:text-persian-plum'
+                scroll={false}
               >
                 Prendre Rendez vous
               </Link>
@@ -70,25 +66,8 @@ const CalendarNailServiceCard = (props: Props) => {
           </div>
         </div>
       </div>
-      <Modal isOpen={calendarIsOpen} className='pt-32 overflow-auto'>
-        <div className='text-bittersweet w-[350px] flex flex-col bg-white p-7 rounded-xl shadow-2xl'>
-          <Link
-            href={pathname}
-            className='cursor-pointer self-end pb-5 text-2xl hover:text-persian-plum m-2'
-          >
-            <RxCross2 />
-          </Link>
-          <CustomCalendar
-            appointment={props.appointment}
-            nail_service={{
-              id: props.nail_service.id,
-              duration: props.nail_service.duration,
-            }}
-          />
-        </div>
-      </Modal>
     </>
   );
 };
 
-export default CalendarNailServiceCard;
+export default AppointmentNailServiceCard;

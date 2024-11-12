@@ -19,7 +19,7 @@ const jim_Nightshade = Jim_Nightshade({
 export default function Home() {
   return (
     <div className={`${laBelleAurore}`}>
-      <div className='bg-home-hands bg-cover lg:bg-cover bg-no-repeat w-[2400] h-[400px] lg:h-[500px] lg:bg-[center_bottom_-10rem] mb-10 relative  -z-[1]'>
+      <div className='bg-home bg-cover lg:bg-cover bg-no-repeat w-[2400] h-[400px] lg:h-[500px] lg:bg-[center_bottom_-10rem] mb-10 relative  -z-[1]'>
         <a
           href=''
           className={classNames(
@@ -62,10 +62,10 @@ export default function Home() {
             )}
           />
         </div>
-        <div className='flex flex-col items-center gap-10 px-12 py-12 min-[1148px]:pl-[30rem] min-[1148px]:items-baseline'>
+        <div className='flex flex-col lg:text-left text-center items-center gap-10 px-12 py-12 min-[1148px]:pl-[30rem] min-[1148px]:items-baseline'>
           <h2
             className={classNames(
-              'text-bittersweet text-5xl md:text-7xl self-start uppercase font-jimNightshade'
+              'text-bittersweet text-5xl md:text-7xl uppercase font-jimNightshade'
             )}
           >
             Julia santin

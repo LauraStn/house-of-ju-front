@@ -30,7 +30,8 @@ import {NailServiceProps} from '../card/NailServiceCard';
 
 export type PropsCalendar = {
   appointment: Appointment[];
-  nail_service: Pick<NailServiceProps, 'duration' | 'id'>;
+  nailServiceList: NailServiceProps[];
+  nail_service_id: Pick<NailServiceProps, 'id'>;
 };
 
 export const CustomCalendar = (props: PropsCalendar) => {
@@ -40,13 +41,15 @@ export const CustomCalendar = (props: PropsCalendar) => {
   const [dateToOpen, setDateToOpen] = useState<string | null>(null); // Utilisé pour définir qu'elle modal de quel date dois s'ouvrir
   const [confirmation, setConfirmation] = useState(false);
   const [hourSelected, setHourSelected] = useState('');
+  const nailServiceSelected = props.nailServiceList.find(
+    (item) => item.id === Number(props.nail_service_id.id)
+  );
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathName = usePathname();
   const dateSelected = searchParams.get('date');
-  const hours = getConsultationsRange(
-    Number(props.nail_service.duration) || 60
-  ); // Utilise des paramètres pour calculé les créneaux de départ et d'arrivé et retourne les heures en format string
+  const hours = getConsultationsRange(Number(nailServiceSelected?.duration)); // Utilise des paramètres pour calculé les créneaux de départ et d'arrivé et retourne les heures en format string
+  console.log(nailServiceSelected);
 
   const days = eachDayOfInterval({
     // eachDayOfInterval renvoie tous les jours donné dans un interval
@@ -89,7 +92,7 @@ export const CustomCalendar = (props: PropsCalendar) => {
     //e.g. si hour est égale a 14:00 sous forme de string, on crée une date du jour qui sera a 14:00
     const addDuration = addMinutes(
       parseHour,
-      Number(props.nail_service.duration)
+      Number(nailServiceSelected?.duration)
     ); // On ajoute la durée qui est dans l'url ?duration=30|60 etc...
     const termStart = format(parseHour, 'kk:mm'); // Permet de récupéré la date et de renvoyé un string qui récupére l'heure de début
     const termEnd = format(addDuration, 'kk:mm'); // Heure de fin
@@ -97,10 +100,10 @@ export const CustomCalendar = (props: PropsCalendar) => {
     const res: {success: boolean; message: string} = await create({
       // Server action qui éxécut l'action coté serveur , on pourra rafraichir les données sans useState du genre isReload avec un revalidateTag
       date: day,
-      duration: Number(props.nail_service.duration),
+      duration: Number(nailServiceSelected?.duration),
       start: termStart,
       end: termEnd,
-      nail_service_id: props.nail_service.id,
+      nail_service_id: Number(nailServiceSelected?.id),
     });
     if (res.success) {
       toast.success(res.message);
@@ -111,7 +114,7 @@ export const CustomCalendar = (props: PropsCalendar) => {
   return (
     <div>
       {' '}
-      <div className='flex items-center justify-between'>
+      <div className='flex items-center lg:flex-row justify-between'>
         <FaArrowLeft />
         <ButtonCalendar label='Précédent' onClick={previousMonth} />
 
@@ -139,7 +142,9 @@ export const CustomCalendar = (props: PropsCalendar) => {
             )}
           >
             <Link
-              href={`${pathName}?calendar=1&date=${format(day, 'dd-MM-yyyy')}`}
+              href={`${pathName}?calendar=${
+                nailServiceSelected?.id
+              }&date=${format(day, 'dd-MM-yyyy')}`}
               scroll={false}
               onClick={() => handleShowTerm(day)}
               className={classNames('px-2', {
@@ -171,7 +176,7 @@ export const CustomCalendar = (props: PropsCalendar) => {
           day={dateSelected as string}
           hours={hours}
           createTerm={createTerm}
-          userDuration={props.nail_service.duration.toString()} //TODO: modifier le type de string a number
+          nailServiceSelected={nailServiceSelected}
           appointment={props.appointment}
           setConfirmation={setConfirmation}
           confirmation={confirmation}
@@ -189,13 +194,13 @@ const DayModal = (props: {
   hour: string;
   hours: HoursSlot[];
   createTerm: (day: string, hour: string) => Promise<void>;
-  userDuration: string;
+  nailServiceSelected?: NailServiceProps;
   appointment: Appointment[];
   confirmation: boolean;
   setConfirmation: Dispatch<SetStateAction<boolean>>;
   setHourSelected: Dispatch<SetStateAction<string>>;
 }) => {
-  const handleConfirmation = (hour: string) => {
+  const handleConfirmation = (hour: string, duration: number) => {
     props.setConfirmation(true);
     props.setHourSelected(hour);
   };
@@ -234,7 +239,12 @@ const DayModal = (props: {
                   //Si tu veux ouvrir une modale de confirmation, remplace la méthode props.term par une méthode qui ouvre la modale de confirmation avec les mêmes paramétres.
                   //Et dans la modale de confirmation, tu utilise createTerm avec les infos si c'est accepté
                   // onClick={() => props.createTerm(props.day, hour.hours)}
-                  onClick={() => handleConfirmation(hour.hours)}
+                  onClick={() =>
+                    handleConfirmation(
+                      hour.hours,
+                      Number(props.nailServiceSelected?.duration)
+                    )
+                  }
                   key={hoursIndex}
                   className={classNames('rounded-lg px-4 py-2', {
                     'bg-bittersweet block': !hasEvent,
@@ -256,6 +266,7 @@ const DayModal = (props: {
                   <ul>
                     <li>Date : {props.day}</li>
                     <li>Heure : {props.hour}</li>
+                    <li>duration : {props.nailServiceSelected?.duration}</li>
                   </ul>
                   <div className='flex gap-4 items-center justify-center'>
                     <button

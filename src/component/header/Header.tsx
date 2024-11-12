@@ -49,14 +49,13 @@ const Header = (props: {userLogged: User}) => {
       <div className='bg-bittersweet text-center text-persian-plum'>
         <span className='font-bold'>Version bêta:</span> Ce site est en cours de
         développement, si vous souhaitez prendre rdv veuillez le faire par
-        téléphone
+        téléphone.
       </div>
       <header
         className={classNames(
           'sticky md:static transition-all h-24 z-50 left-0 right-0 duration-500 bg-melon text-white  md:px-4 md:py-2 flex  md:flex-row '
         )}
       >
-        {/* <div className='flex items-center justify-between'> */}
         <Image
           src={'/images/logojs.png'}
           alt=''
@@ -65,8 +64,6 @@ const Header = (props: {userLogged: User}) => {
           className='h-20 self-center ml-4 w-20 sticky z-[60] md:static'
         />
         <Burger isOpen={isOpen} handleMenu={handleMenu} />
-        {/* </div> */}
-
         <nav
           className={classNames(
             'fixed text-lg md:text-sm md:static md:flex md:flex-row w-full z-50 transition-all duration-500 top-0 left-0 right-0 items-center md:pt-0 h-screen md:h-auto backdrop-blur-lg md:justify-end lg:gap-16 xl:gap-60 2xl:gap-72 md:gap-12 bg-melon/70 md:bg-inherit',

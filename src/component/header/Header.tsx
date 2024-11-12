@@ -75,7 +75,7 @@ const Header = (props: {userLogged: User}) => {
         >
           <ul
             className={classNames(
-              'flex flex-col lg:text-xl md:flex-row flex-wrap gap-5 items-center pt-36 md:pt-0'
+              'flex flex-col lg:text-xl md:flex-row flex-wrap gap-5 items-center pt-52 md:pt-0'
             )}
           >
             <li>

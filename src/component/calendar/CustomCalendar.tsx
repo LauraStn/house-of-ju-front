@@ -200,7 +200,7 @@ const DayModal = (props: {
   setConfirmation: Dispatch<SetStateAction<boolean>>;
   setHourSelected: Dispatch<SetStateAction<string>>;
 }) => {
-  const handleConfirmation = (hour: string, duration: number) => {
+  const handleConfirmation = (hour: string) => {
     props.setConfirmation(true);
     props.setHourSelected(hour);
   };
@@ -241,8 +241,8 @@ const DayModal = (props: {
                   // onClick={() => props.createTerm(props.day, hour.hours)}
                   onClick={() =>
                     handleConfirmation(
-                      hour.hours,
-                      Number(props.nailServiceSelected?.duration)
+                      hour.hours
+                      // Number(props.nailServiceSelected?.duration)
                     )
                   }
                   key={hoursIndex}

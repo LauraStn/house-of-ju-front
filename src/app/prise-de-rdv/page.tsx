@@ -1,17 +1,17 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import {Fragment} from 'react';
+import {RxCross2} from 'react-icons/rx';
 
+import {CustomCalendar} from '@/component/calendar/CustomCalendar';
 import AppointmentNailServiceCard from '@/component/card/CalendarNailServiceCard';
 import {NailServiceProps} from '@/component/card/NailServiceCard';
+import Modal from '@/component/modals/Modal';
 import {
   Appointment as AppointmentProps,
   getAppointment,
 } from '@/services/appointmentService';
 import {getAllNailServices} from '@/services/nailService';
-import {CustomCalendar} from '@/component/calendar/CustomCalendar';
-import Modal from '@/component/modals/Modal';
-import Link from 'next/link';
-import {RxCross2} from 'react-icons/rx';
 
 const getData = async () => {
   const nailServiceList: NailServiceProps[] = await getAllNailServices();

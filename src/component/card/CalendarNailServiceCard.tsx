@@ -1,14 +1,11 @@
 'use client';
 import classNames from 'classnames';
 import Link from 'next/link';
-import {usePathname, useSearchParams} from 'next/navigation';
+import {usePathname} from 'next/navigation';
 import React, {useState} from 'react';
-import {RxCross2} from 'react-icons/rx';
 
 import {Appointment} from '@/services/appointmentService';
 
-import {CustomCalendar} from '../calendar/CustomCalendar';
-import Modal from '../modals/Modal';
 import {NailServiceProps} from './NailServiceCard';
 
 type Props = {nail_service: NailServiceProps; appointment: Appointment[]};

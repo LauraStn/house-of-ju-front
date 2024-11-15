@@ -2,61 +2,45 @@ import axios, {AxiosResponse} from 'axios';
 
 import {AuthProps} from '@/component/inputs/Input';
 
-export async function registerUser(user: AuthProps): Promise<AxiosResponse> {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}auth/signup`;
+export const registerUser = async (user: AuthProps): Promise<AxiosResponse> => {
+  const res = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}auth/signup`,
+    user,
+    {
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  );
+  return res;
+};
 
-  const axiosConfig = {
-    headers: {
-      'content-type': 'application/json',
-    },
-  };
-  return axios
-    .post(url, user, axiosConfig)
-    .then((res) => {
-      return res;
-    })
-    .catch((e) => {
-      return e;
-    });
-}
-
-export async function loginUser(
+export const loginUser = async (
   user: Pick<AuthProps, 'email' | 'password'>
-): Promise<AxiosResponse> {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}auth/signin`;
+): Promise<AxiosResponse> => {
+  const res = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}auth/signin`,
+    user,
+    {
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  );
+  return res;
+};
 
-  const axiosConfig = {
-    headers: {
-      'content-type': 'application/json',
-    },
-  };
-  return axios
-    .post(url, user, axiosConfig)
-    .then((res) => {
-      return res;
-    })
-    .catch((e) => {
-      return e;
-    });
-}
-
-export async function sendResetEmail(
+export const sendResetEmail = async (
   email: Pick<AuthProps, 'email'>
-): Promise<AxiosResponse> {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}auth/reset`;
-
-  const axiosConfig = {
-    headers: {
-      'content-type': 'application/json',
-    },
-  };
-
-  return axios
-    .post(url, email, axiosConfig)
-    .then((res) => {
-      return res;
-    })
-    .catch((e) => {
-      return e;
-    });
-}
+): Promise<AxiosResponse> => {
+  const res = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}auth/reset`,
+    email,
+    {
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  );
+  return res;
+};

@@ -6,7 +6,7 @@ import React, {useState} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
 
-import {addImageToGallery, uploadImage} from '@/services/imageGalleryService';
+import {upload} from '@/action/action';
 
 export type AddImageGallery = {
   file?: File[];
@@ -30,23 +30,22 @@ const UploadImageForm = (props: {
       const formData = new FormData();
       formData.append('file', data.file[0]);
 
-      try {
-        const uploadResponse = await uploadImage(formData);
-        const filename = uploadResponse.data;
-        formData.delete('file');
-        formData.append('image_url', filename);
+      const uploadResponse = await upload(formData);
 
-        const res = await addImageToGallery(formData);
+      // const filename = uploadResponse.data;
+      // formData.delete('file');
+      // formData.append('image_url', filename);
 
-        if (res.status === 201) {
-          toast.success('Image ajouté à la galerie');
-          router.push(props.pathName);
-          props.setIsReload(true);
-          resetPreview();
-        }
-      } catch (e) {
-        return e;
+      // const res = await addImageToGallery(formData);
+
+      if (uploadResponse.success) {
+        toast.success(uploadResponse.message);
+        router.push(props.pathName);
+        props.setIsReload(true);
+        resetPreview();
+        return;
       }
+      return toast.error('erreur lors du téléchargement');
     }
   };
 

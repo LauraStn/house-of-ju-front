@@ -13,5 +13,5 @@ export const logoutAction = async () => {
     cookies().delete('cookieKey');
     return redirect('/');
   }
-  throw Error('No token provided') // Je ne sais pas commennt tu vas gérer ça je te laisserai voir 
+  throw Error('No token provided')
 };

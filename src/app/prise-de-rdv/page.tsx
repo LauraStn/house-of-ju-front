@@ -29,8 +29,6 @@ type ParamsProps = {
 export default async function Appointment(props: ParamsProps) {
   const data = await getData();
 
-  console.log(props.searchParams.calendar);
-
   return (
     <>
       <div>
@@ -48,7 +46,7 @@ export default async function Appointment(props: ParamsProps) {
             </h2>
           </div>
         </div>
-        <div className='m-5 shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-2 md:mx-24 rounded-md justify-around items-center flex flex-col lg:flex-row'>
+        <div className='my-10 mx-5 md:mx-auto shadow-[0_10px_20px_rgba(255,_167,_154,_1)] p-2 rounded-md items-center flex flex-col lg:w-1/2'>
           <div>
             <p className='text-bittersweet p-5 text-center'>
               Vous pouvez prendre rendez-vous en ligne, aucun accompte ne vous
@@ -75,7 +73,7 @@ export default async function Appointment(props: ParamsProps) {
       </div>
       <Modal
         isOpen={props.searchParams.calendar !== undefined}
-        className='pt-32 h-screen overflow-auto'
+        className='pt-72 h-screen overflow-auto'
       >
         <div className='text-bittersweet w-[350px] flex flex-col bg-white p-7 rounded-xl shadow-2xl'>
           <Link

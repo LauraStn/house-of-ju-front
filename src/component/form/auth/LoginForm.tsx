@@ -11,8 +11,8 @@ import {toast} from 'react-toastify';
 import {loginUser} from '@/services/authService';
 import {getUserLogged} from '@/services/userService';
 
-import Input, {AuthProps} from '../inputs/Input';
-import Modal from '../modals/Modal';
+import Input, {AuthProps} from '../../inputs/Input';
+import Modal from '../../modals/Modal';
 import {FormFields} from './RegisterForm';
 import SendMailReset from './SendMailReset';
 
@@ -36,10 +36,11 @@ const LoginForm = () => {
           return toast.error('Connexion impossible');
         }
         const user = await getUserLogged({token: token});
-        if (user.data.isAdmin) {
+
+        if (user.isAdmin) {
           return router.push('/admin');
         }
-        return router.push('/profil');//TODO verif du reload de header a la connexion
+        return router.push('/profil'); //TODO verif du reload de header a la connexion
         // DONE A tester , je n'ai pas les mdp de admin
         // const user = await getUserLogged({token: token});
         // if(!user.data.isAdmin){
@@ -86,7 +87,7 @@ const LoginForm = () => {
           className='flex flex-col justify-center items-center gap-4'
         >
           {formFields.map((field) => (
-            <Fragment key={field.id}>
+            <Fragment key={field.label}>
               <Input
                 type={field.type}
                 id={field.id}

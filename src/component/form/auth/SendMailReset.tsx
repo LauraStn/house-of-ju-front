@@ -8,7 +8,7 @@ import {toast} from 'react-toastify';
 
 import {sendResetEmail} from '@/services/authService';
 
-import {AuthProps} from '../inputs/Input';
+import {AuthProps} from '../../inputs/Input';
 
 const SendMailReset = (props: {pathName: string}) => {
   const router = useRouter();
@@ -53,7 +53,7 @@ const SendMailReset = (props: {pathName: string}) => {
               </label>
               <input
                 type='email'
-                id='email'
+                id='emailReset'
                 className='focus:outline-none p-2 focus:border-mona-lisa focus:ring-1 focus:ring-mona-lisa border-solid border-2 border-chardon rounded-md h-8 w-72'
                 {...register('email', {required: true})}
               />

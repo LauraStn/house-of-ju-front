@@ -19,7 +19,7 @@ const jim_Nightshade = Jim_Nightshade({
 export default function Home() {
   return (
     <div className={`${laBelleAurore}`}>
-      <div className='bg-home bg-cover lg:bg-cover bg-no-repeat w-[2400] h-[400px] lg:h-[500px] lg:bg-[center_bottom_-10rem] mb-10 relative  -z-[1]'>
+      <div className='bg-home bg-cover lg:bg-cover bg-no-repeat w-[2400] bg-center h-[400px] lg:h-[500px] lg:bg-[center_bottom_-10rem] mb-10 relative  -z-[1]'>
         <a
           href=''
           className={classNames(

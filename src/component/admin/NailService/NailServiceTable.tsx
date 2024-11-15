@@ -5,9 +5,9 @@ import {usePathname, useSearchParams} from 'next/navigation';
 import React, {Fragment, useEffect, useState} from 'react';
 
 import {NailServiceProps} from '@/component/card/NailServiceCard';
-import CreateServiceForm from '@/component/form/CreateServiceForm';
-import DeleteServiceForm from '@/component/form/DeleteServiceForm';
-import EditServiceForm from '@/component/form/EditServiceForm';
+import CreateServiceForm from '@/component/form/nailService/CreateServiceForm';
+import DeleteServiceForm from '@/component/form/nailService/DeleteServiceForm';
+import EditServiceForm from '@/component/form/nailService/EditServiceForm';
 import Modal from '@/component/modals/Modal';
 import {useIsMobile} from '@/hook/useIsMobile';
 import {getAllNailServices} from '@/services/nailService';

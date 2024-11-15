@@ -5,8 +5,8 @@ import {usePathname, useSearchParams} from 'next/navigation';
 import React, {Fragment, useEffect, useState} from 'react';
 
 import {ImageGalleryProps} from '@/component/card/ImageGalleryCard';
-import DeleteImageForm from '@/component/form/DeleteImageForm';
-import UploadImageForm from '@/component/form/UploadImageForm';
+import DeleteImageForm from '@/component/form/ImageGallery/DeleteImageForm';
+import UploadImageForm from '@/component/form/ImageGallery/UploadImageForm';
 import Modal from '@/component/modals/Modal';
 import {useIsMobile} from '@/hook/useIsMobile';
 import {getAllImagesGallery} from '@/services/imageGalleryService';
@@ -28,8 +28,7 @@ const GalleryAdmin = () => {
   useEffect(() => {
     getAllImagesGallery()
       .then((res) => {
-        setImagesList(res);
-       
+        setImagesList(res.data);
       })
       .catch((e) => {
         return e;

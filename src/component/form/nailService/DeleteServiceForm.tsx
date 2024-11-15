@@ -5,35 +5,33 @@ import {usePathname, useRouter} from 'next/navigation';
 import React from 'react';
 import {toast} from 'react-toastify';
 
-import {deleteImageOfGallery} from '@/services/imageGalleryService';
+import {deleteNailServiceAction} from '@/action/action';
 
-const DeleteImageForm = (props: {
+const DeleteServiceForm = (props: {
   id: number;
   pathName: string;
   setIsReload: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const router = useRouter();
 
-  function HandleDeleteImage() {
-    deleteImageOfGallery(props.id)
-      .then((res) => {
-        if (res.status === 200) {
-          router.push(props.pathName);
-          props.setIsReload(true);
-          toast.success('Photo supprimée !');
-          return;
-        }
-      })
-      .catch((e) => toast.error(e));
+  async function HandleDeleteNailService() {
+    const res = await deleteNailServiceAction(props.id);
+
+    if (res.success) {
+      router.push(props.pathName);
+      props.setIsReload(true);
+      return toast.success(res.message);
+    }
+    return toast.error('Erreur lors de la suppression');
   }
   const pathName = usePathname();
   return (
     <div className='text-bittersweet text-center bg-white p-7 rounded-xl shadow-2xl'>
       <h3 className='font-jimNightshade uppercase text-3xl pb-10'>
-        Supprimer une photo
+        Supprimer une prestation
       </h3>
       <div className='flex flex-col gap-4'>
-        <h3>Voulez vous vraiment supprimer cette photo ?</h3>
+        <h3>Voulez vous vraiment supprimer cet élément ?</h3>
         <div className='flex justify-around pt-3'>
           <Link
             href={pathName}
@@ -44,7 +42,7 @@ const DeleteImageForm = (props: {
           </Link>
           <button
             onClick={() => {
-              HandleDeleteImage();
+              HandleDeleteNailService();
             }}
             className='py-2 px-5 cursor-pointer w-24 text-white h-10 bg-mona-lisa rounded-lg'
           >
@@ -56,4 +54,4 @@ const DeleteImageForm = (props: {
   );
 };
 
-export default DeleteImageForm;
+export default DeleteServiceForm;

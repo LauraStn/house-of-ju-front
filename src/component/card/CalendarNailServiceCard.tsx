@@ -19,7 +19,7 @@ const AppointmentNailServiceCard = (props: Props) => {
     <>
       <div
         key={props.nail_service.id}
-        className='m-2 shadow-sm shadow-bittersweet p-5 md:mx-24 rounded-md flex flex-col lg:flex-row'
+        className='m-2 shadow-sm shadow-bittersweet p-5 md:mx-24 rounded-md flex flex-col'
       >
         <div className='flex justify-between'>
           <div className='gap-2 flex flex-col lg:w-96'>

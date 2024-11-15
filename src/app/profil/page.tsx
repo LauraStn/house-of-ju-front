@@ -3,7 +3,9 @@ import {Fragment} from 'react';
 
 import AppointmentCard from '@/component/card/AppointmentCard';
 import {getUserAppointment} from '@/services/appointmentService';
-// import {useEffect} from 'react';
+import {getUserLogged, UserProps} from '@/services/userService';
+import {getToken} from '@/utils/tokenUtils';
+
 export type UserAppointmentProps = {
   id: number;
   date: string;
@@ -13,25 +15,25 @@ export type UserAppointmentProps = {
   name: string;
   price: number;
 };
-const getData = async () => {
+const getAppointment = async () => {
   const userAppointment: UserAppointmentProps[] = await getUserAppointment();
-
   return {
     userAppointment: userAppointment,
   };
 };
+const getUser = async () => {
+  const token = (await getToken()) as string;
+  if (token === undefined) {
+    return {user: undefined};
+  }
+  const userInfos: UserProps = await getUserLogged({token: token});
+  return {
+    userInfos: userInfos,
+  };
+};
 export default async function Profil() {
-  const data = await getData();
-
-  // useEffect(() => {
-  //   getUserAppointment()
-  //     .then((res) => {
-  //     
-  //     })
-  //     .catch((e) => {
-  //       return e;
-  //     });
-  // }, []);
+  const appointments = await getAppointment();
+  const user = await getUser();
   return (
     <div>
       <div className='bg-profil md:flex md:justify-center md:items-center bg-no-repeat bg-cover h-[300px] py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>
@@ -54,7 +56,7 @@ export default async function Profil() {
             mes rendez-vous
           </h2>
           <div className='flex flex-col gap-5'>
-            {data.userAppointment.map((item) => (
+            {appointments.userAppointment.map((item) => (
               <Fragment key={item.id}>
                 <AppointmentCard
                   id={item.id}

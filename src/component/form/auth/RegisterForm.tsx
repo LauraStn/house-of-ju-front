@@ -8,7 +8,7 @@ import {toast} from 'react-toastify';
 
 import {registerUser} from '@/services/authService';
 
-import Input, {AuthProps} from '../inputs/Input';
+import Input, {AuthProps} from '../../inputs/Input';
 
 export type FormFields = {
   type: string;
@@ -31,13 +31,9 @@ const RegisterForm = () => {
 
   const onSubmit: SubmitHandler<AuthProps> = (data) =>
     registerUser(data).then((res) => {
-     
-
       if (res.status === 201) {
         toast.success(res.data);
       } else {
-        
-
         toast.error('Error');
       }
     });

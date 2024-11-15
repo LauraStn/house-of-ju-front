@@ -49,7 +49,6 @@ export const CustomCalendar = (props: PropsCalendar) => {
   const pathName = usePathname();
   const dateSelected = searchParams.get('date');
   const hours = getConsultationsRange(Number(nailServiceSelected?.duration)); // Utilise des paramètres pour calculé les créneaux de départ et d'arrivé et retourne les heures en format string
-  console.log(nailServiceSelected);
 
   const days = eachDayOfInterval({
     // eachDayOfInterval renvoie tous les jours donné dans un interval

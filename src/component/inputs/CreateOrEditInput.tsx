@@ -28,7 +28,7 @@ const CreateOrCreateOrEditInput = (props: CreateOrEditInputProps) => {
       <input
         type={props.type}
         id={props.id} //TODO: modifier l'input duration (select) avec valeur: 30/60/90/120
-        className='focus:outline-none p-2 focus:border-mona-lisa focus:ring-1 focus:ring-mona-lisa border-solid border-2 border-chardon rounded-md h-8 w-72 md:w-96'
+        className='focus:outline-none p-2 focus:border-mona-lisa focus:ring-1 focus:ring-mona-lisa border-solid border-2 border-chardon rounded-md h-8 w-72 md:w-full'
         {...props.register(props.name, {required: true})}
         defaultValue={props.value}
       />

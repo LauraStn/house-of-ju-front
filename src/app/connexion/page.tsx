@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import LoginForm from '@/component/form/LoginForm'
+import LoginForm from '@/component/form/auth/LoginForm';
 
-export default function Login () {
+export default function Login() {
   return (
     <div>
-      <LoginForm/>
+      <LoginForm />
     </div>
-  )
+  );
 }
-

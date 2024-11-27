@@ -12,7 +12,8 @@ import {getToken} from '@/utils/tokenUtils';
 
 export const metadata: Metadata = {
   title: 'House of Ju',
-  description: 'Services de manucures et soins esthétiques professionnels pour des mains impeccables.',
+  description:
+    'Services de manucures et soins esthétiques professionnels pour des mains impeccables.',
 };
 
 const jim_Nightshade = Jim_Nightshade({
@@ -35,6 +36,9 @@ export const arima = Arima({
 
 const getData = async () => {
   const token = (await getToken()) as string;
+  if (token === undefined) {
+    return {user: undefined};
+  }
   const user = await getUserLogged({token: token});
 
   return {user};
@@ -54,7 +58,7 @@ export default async function RootLayout({
       >
         {/* DONE vérif admin dans les cookies  J'ai ajouté les infos du user depuis le call getData, il faut peut etre crée un type pour les infos du user */}
         {/* TODO Genre type User = {id:number etc... pour être bien  reconnupar typescript} */}
-        <Header userLogged={data.user.data} />
+        <Header userLogged={data?.user} />
         <ToastContainer
           position='bottom-center'
           autoClose={4000}

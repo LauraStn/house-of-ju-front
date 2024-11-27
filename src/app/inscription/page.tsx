@@ -1,13 +1,12 @@
-"use client"
-import React from 'react'
+'use client';
+import React from 'react';
 
-import RegisterForm from '@/component/form/RegisterForm'
+import RegisterForm from '@/component/form/auth/RegisterForm';
 
-export default function Register () {
+export default function Register() {
   return (
     <div>
-      <RegisterForm/>
+      <RegisterForm />
     </div>
-  )
+  );
 }
-

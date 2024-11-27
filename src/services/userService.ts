@@ -1,24 +1,18 @@
-
 import axios from 'axios';
-//TODO refactoriser avec cookies
-export async function getUserLogged(params:{token:string}) {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}user/one`;
 
-  const axiosConfig = {
+export type UserProps = {
+  email: string;
+  first_name: string;
+  last_name: string;
+  address: string;
+  phone: string;
+};
+export const getUserLogged = async (params: {token: string}) => {
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}user/one`, {
     headers: {
       'content-type': 'application/json',
       Authorization: `Bearer ${params.token}`,
     },
-  };
-
-  return axios
-    .get(url, axiosConfig)
-    .then((res) => {
-     
-      
-      return res;
-    })
-    .catch((e) => {
-      return e;
-    });
-}
+  });
+  return res.data;
+};

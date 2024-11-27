@@ -1,10 +1,12 @@
-// 'use client';
 import React from 'react';
 
 import GalleryAdmin from '@/component/admin/gallery/GalleryAdmin';
 import NailServiceAdmin from '@/component/admin/NailService/NailServiceTable';
 
-export default function Admin() {
+
+export default async function Admin() {
+  // const app = await getAllAppointmentForAdmin();
+
   return (
     <div>
       <div className='bg-admin bg-cover bg-no-repeat h-[300px] flex justify-center py-5 px-5 md:h-[450px] lg:bg-[center_bottom_-10rem] lg:h-[500px]'>
@@ -16,6 +18,7 @@ export default function Admin() {
       </div>
       <NailServiceAdmin />
       <GalleryAdmin />
+      {/* <AppointmentAdmin /> */}
     </div>
   );
 }

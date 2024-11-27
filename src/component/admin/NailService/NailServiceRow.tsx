@@ -60,9 +60,9 @@ const NailServiceRow = (
           <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center'>
             <div className='bg-white p-5 rounded-lg shadow-lg max-w-md w-full'>
               <h3 className='text-lg text-bittersweet font-bold mb-4'>
-                Description Complète
+                {props.name}
               </h3>
-              <p className='text-melon'>{props.description}</p>
+              <p className='text-mona-lisa'>{props.description}</p>
               <button
                 className='mt-4 bg-melon text-white px-4 py-2 rounded hover:bg-bittersweet transition duration-300'
                 onClick={closeModal}

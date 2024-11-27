@@ -1,31 +1,15 @@
 import classNames from 'classnames';
-import {Jim_Nightshade, La_Belle_Aurore} from 'next/font/google';
 import Image from 'next/image';
 
 import photo from '../../public/images/photo1.jpg';
 
-const laBelleAurore = La_Belle_Aurore({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-la-belle-aurore',
-});
-
-const jim_Nightshade = Jim_Nightshade({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-jim_nightshade',
-});
-
 export default function Home() {
   return (
-    <div className={`${laBelleAurore}`}>
-      <div className='bg-home bg-cover lg:bg-cover bg-no-repeat w-[2400] bg-center h-[400px] lg:h-[500px] lg:bg-[center_bottom_-10rem] mb-10 relative  -z-[1]'>
+    <div>
+      <div className='bg-home font-laBelleAurore bg-cover lg:bg-cover bg-no-repeat w-[2400] bg-center h-[400px] lg:h-[500px] lg:bg-[center_bottom_-10rem] mb-10 relative -z-[1]'>
         <a
           href=''
-          className={classNames(
-            'absolute bg-melon text-bittersweet w-80 text-4xl p-3 -translate-x-2/4 -translate-y-2/4 top-2/4 left-2/4',
-            laBelleAurore.className
-          )}
+          className='absolute bg-melon font-laBelleAurore text-bittersweet w-80 text-4xl p-3 -translate-x-2/4 -translate-y-2/4 top-2/4 left-2/4'
         >
           <h1 className='absolute bg-melon text-bittersweet font-laBelleAurore w-80 text-4xl p-3 -translate-x-2/4 -translate-y-2/4 top-2/4 left-2/4'>
             Prothésiste ongulaire
@@ -35,17 +19,12 @@ export default function Home() {
       <div className='flex flex-col mb-32'>
         <Image
           src={'/images/hands.png'}
-          alt={''}
+          alt={'dessin de deux mains'}
           width={400}
           height={200}
           className='self-center '
         />
-        <h2
-          className={classNames(
-            'text-[#FFCECA] text-4xl text-center',
-            laBelleAurore.className
-          )}
-        >
+        <h2 className='text-mona-lisa font-laBelleAurore text-4xl text-center'>
           House of Ju - Beauté des ongles
         </h2>
       </div>
@@ -53,26 +32,17 @@ export default function Home() {
         <div className='min-[1148px]:pl-28'>
           <Image
             src={photo.src}
-            alt={''}
+            alt={'photo de julia santin prothésiste ongulaire'}
             width={1170}
             height={1560}
-            className={classNames(
-              'border-[14px] border-melon -top-7 w-[650px]  min-[1148px]:w-[480px] min-[1148px]:h-[690px] min-[1148px]:absolute',
-              'static'
-            )}
+            className='border-[14px] border-melon -top-7 w-[650px] static min-[1148px]:w-[480px] min-[1148px]:h-[690px] min-[1148px]:absolute'
           />
         </div>
         <div className='flex flex-col lg:text-left text-center items-center gap-10 px-12 py-12 min-[1148px]:pl-[30rem] min-[1148px]:items-baseline'>
-          <h2
-            className={classNames(
-              'text-bittersweet text-5xl md:text-7xl uppercase font-jimNightshade'
-            )}
-          >
+          <h2 className='text-bittersweet text-5xl md:text-7xl uppercase font-jimNightshade'>
             Julia santin
           </h2>
-          <h3
-            className={classNames('text-mona-lisa text-3xl font-laBelleAurore')}
-          >
+          <h3 className='text-mona-lisa text-3xl font-laBelleAurore'>
             Prothésiste ongulaire à La Roche-sur-Foron
           </h3>
           <div className='h-0.5 w-1/4 bg-melon'></div>
@@ -85,9 +55,7 @@ export default function Home() {
           </p>
           <a
             href=''
-            className={classNames(
-              "text-bittersweet text-2xl md:text-3xl uppercase after:content-['<-'] before:content-['->'] font-jimNightshade"
-            )}
+            className="text-bittersweet text-2xl md:text-3xl uppercase after:content-['<-'] before:content-['->'] font-jimNightshade"
           >
             En savoir plus sur moi
           </a>
@@ -95,12 +63,7 @@ export default function Home() {
       </div>
       <div className='flex flex-col lg:flex-row justify-around items-center py-24'>
         <div className='text-center'>
-          <h3
-            className={classNames(
-              'text-mona-lisa text-4xl p-5 uppercase border-t-2 border-b-2 border-melon my-5',
-              jim_Nightshade.className
-            )}
-          >
+          <h3 className='text-mona-lisa text-4xl font-jimNightshade p-5 uppercase border-t-2 border-b-2 border-melon my-5'>
             Beauté
             <br /> des ongles
           </h3>
@@ -120,12 +83,7 @@ export default function Home() {
           className='my-24'
         />
         <div className='text-center'>
-          <h3
-            className={classNames(
-              'text-mona-lisa text-4xl p-5 uppercase border-t-2 border-b-2 border-melon my-5',
-              jim_Nightshade.className
-            )}
-          >
+          <h3 className='text-mona-lisa text-4xl font-jimNightshade p-5 uppercase border-t-2 border-b-2 border-melon my-5'>
             Beauté
             <br /> du regard
           </h3>
@@ -149,16 +107,14 @@ export default function Home() {
               <br /> client
             </h3>
           </div>
-          <div className={classNames(' w-60 text-center flex flex-col gap-12')}>
-            <p className={classNames('text-persian-plum text-xl mx-3')}>
+          <div className='w-60 text-center flex flex-col gap-12'>
+            <p className='text-persian-plum text-xl mx-3'>
               Connectez-vous à votre espace client pour gérer vos rendez-vous.
             </p>
             <div className='border py-[10px] border-melon'>
               <a
                 href='/connexion'
-                className={classNames(
-                  'uppercase text-lg text-white bg-melon w-full py-1 px-10'
-                )}
+                className='uppercase text-lg text-white bg-melon w-full py-1 px-10'
               >
                 Connectez vous
               </a>

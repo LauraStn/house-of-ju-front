@@ -1,12 +1,25 @@
-import React from 'react';
+'use client';
+import React, {useState} from 'react';
 import {FaRegCalendarAlt} from 'react-icons/fa';
 import {FaMoneyBillWave} from 'react-icons/fa6';
 import {IoHourglassOutline} from 'react-icons/io5';
 import {TbClockHour4} from 'react-icons/tb';
 
-import {UserAppointmentProps} from '@/app/profil/page';
-
+import {usePathname} from 'next/navigation';
+import Link from 'next/link';
+export type UserAppointmentProps = {
+  id: number;
+  date: string;
+  start: string;
+  end: string;
+  duration: number;
+  name: string;
+  price: number;
+  datetime?: string;
+};
 const AppointmentCard = (props: UserAppointmentProps) => {
+  const pathName = usePathname();
+
   return (
     <div className='w-60 shadow-lg'>
       <div className='flex justify-between text-white bg-bittersweet px-4 rounded-t-lg p-2'>
@@ -41,9 +54,13 @@ const AppointmentCard = (props: UserAppointmentProps) => {
         <button className='text-bittersweet font-bold hover:text-persian-plum'>
           Modifier
         </button>
-        <button className='text-bittersweet font-bold hover:text-persian-plum'>
+        <Link
+          className='text-bittersweet font-bold hover:text-persian-plum'
+          href={`${pathName}?delete=${props.id}`}
+          scroll={false}
+        >
           Annuler
-        </button>
+        </Link>
       </div>
     </div>
   );

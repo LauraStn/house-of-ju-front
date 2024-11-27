@@ -6,25 +6,24 @@ import {SubmitHandler, useForm} from 'react-hook-form';
 import {RxCross2} from 'react-icons/rx';
 import {toast} from 'react-toastify';
 
-import {sendResetEmail} from '@/services/authService';
-
 import {AuthProps} from '../../inputs/Input';
+import {sendResetPasswordEmail} from '@/services/authService';
 
 const SendMailReset = (props: {pathName: string}) => {
   const router = useRouter();
   const {register, handleSubmit} = useForm<AuthProps>();
 
   const onSubmit: SubmitHandler<Pick<AuthProps, 'email'>> = (data) =>
-    sendResetEmail(data).then((res) => {
-      if (res.status === 201) {
-        toast.success('Email envoyé avec lien de réinitialisation');
+    sendResetPasswordEmail(data).then((res) => {
+      if (res.data.success) {
+        toast.success(res.data.message);
         router.push(props.pathName);
       } else {
-        toast.error("Ce email n'est lié à aucun compte");
+        toast.error(res.data.message);
       }
     });
   return (
-    <div className='text-bittersweet w-[450px] flex flex-col bg-white p-7 rounded-xl shadow-2xl'>
+    <div className='text-bittersweet w-[350px] md:w-[450px] mx-3 flex flex-col bg-white p-7 rounded-xl shadow-2xl'>
       <Link
         href={props.pathName}
         scroll={false}
@@ -33,7 +32,7 @@ const SendMailReset = (props: {pathName: string}) => {
         <RxCross2 />
       </Link>
       <div className='p-4 flex flex-col justify-center items-center gap-2'>
-        <h3 className=' font-jimNightshade uppercase text-4xl pb-5'>
+        <h3 className=' font-jimNightshade uppercase text-3xl md:text-4xl pb-5'>
           Mot de passe oublié
         </h3>
         <p className='text-center text-mona-lisa w-72 pb-10'>

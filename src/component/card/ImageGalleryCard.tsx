@@ -10,7 +10,7 @@ const ImageGalleryCard = (props: ImageGalleryProps) => {
   return (
     <Image
       src={`http://localhost:3003/download-image/view/${props.image_url}`}
-      alt=''
+      alt='photos de mains de femmes avec faux ongles'
       width={1200}
       height={2000}
       className='w-72'

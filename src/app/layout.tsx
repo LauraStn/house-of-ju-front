@@ -50,7 +50,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const data = await getData();
-  
 
   return (
     <html lang='fr'>
@@ -59,7 +58,7 @@ export default async function RootLayout({
       >
         {/* DONE vérif admin dans les cookies  J'ai ajouté les infos du user depuis le call getData, il faut peut etre crée un type pour les infos du user */}
         {/* TODO Genre type User = {id:number etc... pour être bien  reconnupar typescript} */}
-        <Header userLogged={data.user} />
+        <Header userLogged={data?.user} />
         <ToastContainer
           position='bottom-center'
           autoClose={4000}

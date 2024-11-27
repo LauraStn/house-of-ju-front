@@ -1,6 +1,5 @@
 'use client';
 
-import {Arima} from 'next/font/google';
 import Image from 'next/image';
 import React, {Fragment} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
@@ -9,6 +8,7 @@ import {toast} from 'react-toastify';
 import {registerUser} from '@/services/authService';
 
 import Input, {AuthProps} from '../../inputs/Input';
+import {useRouter} from 'next/navigation';
 
 export type FormFields = {
   type: string;
@@ -17,26 +17,25 @@ export type FormFields = {
   name: 'email' | 'password' | 'first_name' | 'last_name' | 'phone' | 'address';
 };
 
-export const arima = Arima({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-arima',
-});
 const RegisterForm = () => {
-  const {
-    register,
-    handleSubmit,
-    // formState: {errors},
-  } = useForm<AuthProps>();
+  const router = useRouter();
+  const {register, handleSubmit} = useForm<AuthProps>();
 
   const onSubmit: SubmitHandler<AuthProps> = (data) =>
-    registerUser(data).then((res) => {
-      if (res.status === 201) {
-        toast.success(res.data);
-      } else {
-        toast.error('Error');
-      }
-    });
+    registerUser(data)
+      .then((res) => {
+        if (res.status === 201) {
+          toast.success(res.data);
+          setTimeout(() => {
+            router.push('/');
+          }, 3000);
+          return;
+        }
+      })
+      .catch((e) => {
+        toast.error(e.response.data.message);
+        return;
+      });
 
   const formFields: FormFields[] = [
     {

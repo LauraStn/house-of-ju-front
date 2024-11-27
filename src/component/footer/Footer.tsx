@@ -28,7 +28,7 @@ const Footer = () => {
         <p className='text-mona-lisa font-labelleaurore'>
           491 Route de la Vallée du Giffre
           <br />
-          74250 Fillinges
+          74250 La Roche-sur-Foron
         </p>
         <h3
           className={classNames('text-bittersweet text-3xl font-laBelleAurore')}

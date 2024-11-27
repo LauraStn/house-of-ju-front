@@ -4,7 +4,7 @@ import {Fragment} from 'react';
 import {RxCross2} from 'react-icons/rx';
 
 import {CustomCalendar} from '@/component/calendar/CustomCalendar';
-import AppointmentNailServiceCard from '@/component/card/CalendarNailServiceCard';
+import AppointmentNailServiceCard from '@/component/card/AppointmentNailServiceCard';
 import {NailServiceProps} from '@/component/card/NailServiceCard';
 import Modal from '@/component/modals/Modal';
 import {

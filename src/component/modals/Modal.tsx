@@ -6,13 +6,14 @@ import React, {PropsWithChildren} from 'react';
 const Modal = (
   props: PropsWithChildren & {
     isOpen: boolean;
-    className?:string
+    className?: string;
   }
 ) => {
   return (
     <div
       className={classNames(
-        'fixed inset-0 flex justify-center items-center backdrop-blur-sm',props.className,
+        'fixed inset-0 z-50 flex justify-center items-center backdrop-blur-sm',
+        props.className,
         {hidden: !props.isOpen, block: props.isOpen}
       )}
     >

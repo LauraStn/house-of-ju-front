@@ -15,6 +15,7 @@ import Input, {AuthProps} from '../../inputs/Input';
 import Modal from '../../modals/Modal';
 import {FormFields} from './RegisterForm';
 import SendMailReset from './SendMailReset';
+import {loginAction} from '@/action/loginAction';
 
 const LoginForm = () => {
   const params = useSearchParams();
@@ -22,34 +23,26 @@ const LoginForm = () => {
   const {register, handleSubmit} = useForm<AuthProps>();
   const router = useRouter();
 
-  const onSubmit: SubmitHandler<Pick<AuthProps, 'email' | 'password'>> = (
+  const onSubmit: SubmitHandler<Pick<AuthProps, 'email' | 'password'>> = async (
     data
-  ) =>
-    loginUser(data).then(async (res) => {
-      if (res.status === 201) {
-        toast.success('Connecté ! Redirection vers le profile');
-        setCookie('cookieKey', res.data.token.access_token);
-        const token = res.data.token.access_token;
-        if (!token) {
-          //   Gerer l'erreur quand le token est introuvable genre affiché un message dans un toast "Connexion impossible"
-          //  Peut etre devoir gerer le retour dans le back, ca evite de surcharger le front en logique
-          return toast.error('Connexion impossible');
-        }
-        const user = await getUserLogged({token: token});
-
-        if (user.isAdmin) {
-          return router.push('/admin');
-        }
-        return router.push('/profil'); //TODO verif du reload de header a la connexion
-        // DONE A tester , je n'ai pas les mdp de admin
-        // const user = await getUserLogged({token: token});
-        // if(!user.data.isAdmin){
-        //   router.push(`profil`)
-        // }
-      } else {
-        toast.error('Identifiants incorrect');
-      }
-    });
+  ) => {
+    const res = await loginAction(data);
+    if (res.statusCode !== 201) {
+      toast.error(res.message);
+      return;
+    }
+    toast.success(res.message);
+    setCookie('cookieKey', res.token.access_token);
+    const token = res.token.access_token;
+    if (!token) {
+      return toast.error('Connexion impossible');
+    }
+    const user = await getUserLogged({token: token});
+    if (user.isAdmin) {
+      return router.push('/admin');
+    }
+    return router.push('/profil');
+  };
 
   const formFields: FormFields[] = [
     {
@@ -106,10 +99,12 @@ const LoginForm = () => {
           </div>
           <div className='mt-4 flex flex-col gap-3 justify-center items-center'>
             <p className='text-mona-lisa'>Mot de passe oublié ?</p>
-            <Link href={`${pathName}?reset=1`} scroll={false}>
-              <p className='text-bittersweet cursor-pointer'>
-                Réinitialiser le mot de passe
-              </p>
+            <Link
+              className='text-bittersweet cursor-pointer'
+              href={`${pathName}?reset=1`}
+              scroll={false}
+            >
+              Réinitialiser le mot de passe
             </Link>
           </div>
         </form>

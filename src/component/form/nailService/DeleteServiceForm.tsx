@@ -26,7 +26,7 @@ const DeleteServiceForm = (props: {
   }
   const pathName = usePathname();
   return (
-    <div className='text-bittersweet text-center bg-white p-7 rounded-xl shadow-2xl'>
+    <div className='text-bittersweet text-center bg-white w-[350px] md:w-[400px] h-[250px] z-50 p-7 rounded-xl shadow-2xl'>
       <h3 className='font-jimNightshade uppercase text-3xl pb-10'>
         Supprimer une prestation
       </h3>

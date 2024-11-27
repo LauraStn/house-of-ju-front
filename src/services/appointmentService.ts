@@ -10,6 +10,19 @@ export type Appointment = {
   nail_service_id: number;
 };
 
+export const getAllAppointmentForAdmin = async () => {
+  const token = await getToken();
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}appointment/admin`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return res;
+};
+
 export const getAppointment = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}appointment/all`,
@@ -51,5 +64,18 @@ export const getUserAppointment = async () => {
       },
     }
   );
+  return res.data;
+};
+
+export const deleteOneAppointmentByUser = async (id: number, token: string) => {
+  const res = await axios.delete(
+    `${process.env.NEXT_PUBLIC_API_URL}appointment/delete/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
   return res.data;
 };

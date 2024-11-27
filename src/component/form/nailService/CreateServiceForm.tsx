@@ -39,8 +39,8 @@ const CreateServiceForm = (props: {
   };
 
   return (
-    <div className='text-bittersweet bg-white p-7 rounded-xl shadow-2xl'>
-      <h3 className=' font-jimNightshade uppercase text-4xl pb-10'>
+    <div className='text-bittersweet bg-white lg:h-[650px] lg:w-[500px] w-[350px] md:w-[400px] h-[650px] z-50 p-7 rounded-xl shadow-2xl'>
+      <h3 className=' font-jimNightshade font-bold uppercase text-2xl pb-5'>
         Ajouter une prestation
       </h3>
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>

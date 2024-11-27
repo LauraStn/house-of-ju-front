@@ -2,7 +2,11 @@
 
 import {revalidatePath, revalidateTag} from 'next/cache';
 
-import {Appointment, createAppointment} from '@/services/appointmentService';
+import {
+  Appointment,
+  createAppointment,
+  deleteOneAppointmentByUser,
+} from '@/services/appointmentService';
 import {
   addImageToGallery,
   deleteImageOfGallery,
@@ -65,7 +69,6 @@ export const updateNailService = async (
 ) => {
   const token = await getToken();
   const res = await editNailService(id, nailService, token as string);
-  //technique de refresh qui va revalider la route actuelle en réactualisant le cache
   revalidatePath('/admin');
   return res.data;
 };
@@ -75,4 +78,11 @@ export const deleteNailServiceAction = async (id: number) => {
   const res = await deleteNailService(id, token as string);
   revalidatePath('/admin');
   return res.data;
+};
+
+export const deleteUserAppointment = async (id: number) => {
+  const token = await getToken();
+  const res = await deleteOneAppointmentByUser(id, token as string);
+  revalidatePath('/profil');
+  return res;
 };

@@ -37,7 +37,6 @@ const NailServiceAdmin = () => {
       .catch((e) => {
         return e;
       });
-    // setIsReload(false);
   }, [isReload]);
 
   const isMobile = useIsMobile();

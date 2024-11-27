@@ -1,17 +1,8 @@
 'use client';
-import {NailServiceProps} from '@/component/card/NailServiceCard';
-import CreateServiceForm from '@/component/form/nailService/CreateServiceForm';
-import DeleteServiceForm from '@/component/form/nailService/DeleteServiceForm';
-import EditServiceForm from '@/component/form/nailService/EditServiceForm';
-import Modal from '@/component/modals/Modal';
-import {useIsMobile} from '@/hook/useIsMobile';
-import {getAllNailServices} from '@/services/nailService';
 import classNames from 'classnames';
-import Link from 'next/link';
-import {useSearchParams, usePathname} from 'next/navigation';
-import React, {Fragment, useEffect, useState} from 'react';
-import NailServiceMobileCard from '../NailService/NailServiceMobileCard';
-import NailServiceRow from '../NailService/NailServiceRow';
+import React, {Fragment, useState} from 'react';
+
+import {useIsMobile} from '@/hook/useIsMobile';
 
 const AppointmentAdmin = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);

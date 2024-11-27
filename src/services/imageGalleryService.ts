@@ -1,4 +1,3 @@
-import {getToken} from '@/utils/tokenUtils';
 import axios, {AxiosResponse} from 'axios';
 //TODO refactoriser avec cookies
 export async function getAllImagesGallery() {

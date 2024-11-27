@@ -1,4 +1,4 @@
-import ContactForm from '@/component/form/ContactForm';
+
 import Image from 'next/image';
 
 export default function Contact() {

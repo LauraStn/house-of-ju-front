@@ -1,6 +1,7 @@
 import axios, {AxiosResponse} from 'axios';
 
 import {AuthProps} from '@/component/inputs/Input';
+
 import apiClient from '../../lib/axiosApi';
 
 export const registerUser = async (user: AuthProps): Promise<AxiosResponse> => {

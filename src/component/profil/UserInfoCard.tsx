@@ -1,5 +1,6 @@
-import {UserProps} from '@/services/userService';
 import React from 'react';
+
+import {UserProps} from '@/services/userService';
 
 const UserInfoCard = (props: UserProps) => {
   return (

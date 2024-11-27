@@ -8,14 +8,14 @@ import NailServiceCard, {
 import {getAllNailServices} from '@/services/nailService';
 
 import ongle1 from '../../../public/images/ongle1.webp';
+import ongle7 from '../../../public/images/ongle1.webp';
 import ongle2 from '../../../public/images/ongle2.webp';
+import ongle8 from '../../../public/images/ongle2.webp';
 import ongle3 from '../../../public/images/ongle3.webp';
 import ongle4 from '../../../public/images/ongle4.webp';
 import ongle5 from '../../../public/images/ongle5.webp';
-import ongle6 from '../../../public/images/ongle6.webp';
-import ongle7 from '../../../public/images/ongle1.webp';
-import ongle8 from '../../../public/images/ongle2.webp';
 import ongle9 from '../../../public/images/ongle5.webp';
+import ongle6 from '../../../public/images/ongle6.webp';
 import ongle10 from '../../../public/images/ongle6.webp';
 
 

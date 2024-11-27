@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+
 import Image from 'next/image';
 
 import photo from '../../public/images/photo1.jpg';

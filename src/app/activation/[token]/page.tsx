@@ -1,22 +1,13 @@
 'use client';
-import {validateAccount} from '@/services/authService';
 import Image from 'next/image';
 import Link from 'next/link';
-import {useSearchParams} from 'next/navigation';
-import React, {useEffect} from 'react';
-import {toast} from 'react-toastify';
+import React from 'react';
+
+import {validateAccount} from '@/services/authService';
+
 export default async function Activation({params}: {params: {token: string}}) {
-  useEffect(() => {
-    validateAccount(params.token)
-      .then((res) => {
-        toast.success(res.data);
-        return;
-      })
-      .catch((e) => {
-        toast.error(e);
-        return e;
-      });
-  }, []);
+  await validateAccount(params.token);
+
   return (
     <div>
       <div>

@@ -2,12 +2,10 @@ import React from 'react';
 
 import GalleryAdmin from '@/component/admin/gallery/GalleryAdmin';
 import NailServiceAdmin from '@/component/admin/NailService/NailServiceTable';
-import {getAllAppointmentForAdmin} from '@/services/appointmentService';
 
-import AppointmentAdmin from '@/component/admin/appointment/AppointmentAdmin';
 
 export default async function Admin() {
-  const app = await getAllAppointmentForAdmin();
+  // const app = await getAllAppointmentForAdmin();
 
   return (
     <div>

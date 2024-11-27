@@ -6,13 +6,12 @@ import React from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
 
-import {editNailService} from '@/services/nailService';
+import {updateNailService} from '@/action/action';
 
 import {NailServiceProps} from '../../card/NailServiceCard';
 import CreateOrEditInput, {
   CreateOrEditNailServiceProps,
 } from '../../inputs/CreateOrEditInput';
-import {updateNailService} from '@/action/action';
 
 const EditServiceForm = (props: {
   nailService: NailServiceProps[];

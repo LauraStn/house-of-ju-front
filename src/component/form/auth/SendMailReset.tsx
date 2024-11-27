@@ -6,8 +6,9 @@ import {SubmitHandler, useForm} from 'react-hook-form';
 import {RxCross2} from 'react-icons/rx';
 import {toast} from 'react-toastify';
 
-import {AuthProps} from '../../inputs/Input';
 import {sendResetPasswordEmail} from '@/services/authService';
+
+import {AuthProps} from '../../inputs/Input';
 
 const SendMailReset = (props: {pathName: string}) => {
   const router = useRouter();

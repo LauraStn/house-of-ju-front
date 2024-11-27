@@ -5,12 +5,11 @@ import React from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
 
-import {createNailService} from '@/services/nailService';
+import {addNailService} from '@/action/action';
 
 import CreateOrEditInput, {
   CreateOrEditNailServiceProps,
 } from '../../inputs/CreateOrEditInput';
-import {addNailService} from '@/action/action';
 
 const CreateServiceForm = (props: {
   id: number;

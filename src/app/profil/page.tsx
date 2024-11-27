@@ -1,16 +1,14 @@
+import {format, isAfter, isBefore} from 'date-fns';
 import Image from 'next/image';
-import {Fragment, SetStateAction} from 'react';
+import {Fragment} from 'react';
 
 import AppointmentCard from '@/component/card/AppointmentCard';
+import DeleteAppointmentForm from '@/component/form/appointment/DeleteAppointmentForm';
+import Modal from '@/component/modals/Modal';
+import UserInfoCard from '@/component/profil/UserInfoCard';
 import {getUserAppointment} from '@/services/appointmentService';
 import {getUserLogged, UserProps} from '@/services/userService';
 import {getToken} from '@/utils/tokenUtils';
-import UserInfoCard from '@/component/profil/UserInfoCard';
-import {usePathname} from 'next/navigation';
-import Modal from '@/component/modals/Modal';
-import DeleteAppointmentForm from '@/component/form/appointment/DeleteAppointmentForm';
-import {isBefore, isAfter, parse, format} from 'date-fns';
-import Link from 'next/link';
 
 type UserAppointmentProps = {
   id: number;
@@ -23,10 +21,10 @@ type UserAppointmentProps = {
   datetime?: string;
 };
 
-type SortedAppointmentsProps = {
-  past: UserAppointmentProps[];
-  upcoming: UserAppointmentProps[];
-};
+// type SortedAppointmentsProps = {
+//   past: UserAppointmentProps[];
+//   upcoming: UserAppointmentProps[];
+// };
 
 const getAppointment = async () => {
   const userAppointment: UserAppointmentProps[] = await getUserAppointment();

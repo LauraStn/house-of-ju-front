@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 export type UserProps = {
   email: string;
   first_name: string;

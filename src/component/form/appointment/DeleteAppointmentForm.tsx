@@ -1,9 +1,10 @@
 'use client';
-import {deleteUserAppointment} from '@/action/action';
 import Link from 'next/link';
 import {usePathname, useRouter} from 'next/navigation';
 import React from 'react';
 import {toast} from 'react-toastify';
+
+import {deleteUserAppointment} from '@/action/action';
 
 const DeleteAppointmentForm = (props: {id: number}) => {
   const router = useRouter();

@@ -2,6 +2,7 @@
 
 import {revalidatePath, revalidateTag} from 'next/cache';
 
+import {CreateOrEditNailServiceProps} from '@/component/inputs/CreateOrEditInput';
 import {
   Appointment,
   createAppointment,
@@ -12,13 +13,12 @@ import {
   deleteImageOfGallery,
   uploadOneImage,
 } from '@/services/imageGalleryService';
-import {getToken} from '@/utils/tokenUtils';
 import {
   createNailService,
   deleteNailService,
   editNailService,
 } from '@/services/nailService';
-import {CreateOrEditNailServiceProps} from '@/component/inputs/CreateOrEditInput';
+import {getToken} from '@/utils/tokenUtils';
 
 export const create = async (params: Appointment) => {
   const res = await createAppointment({

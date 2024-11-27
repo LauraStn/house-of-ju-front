@@ -8,14 +8,13 @@ import React, {Fragment} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
 
-import {loginUser} from '@/services/authService';
+import {loginAction} from '@/action/loginAction';
 import {getUserLogged} from '@/services/userService';
 
 import Input, {AuthProps} from '../../inputs/Input';
 import Modal from '../../modals/Modal';
 import {FormFields} from './RegisterForm';
 import SendMailReset from './SendMailReset';
-import {loginAction} from '@/action/loginAction';
 
 const LoginForm = () => {
   const params = useSearchParams();

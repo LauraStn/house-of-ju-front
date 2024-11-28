@@ -34,9 +34,6 @@ export const create = async (params: Appointment) => {
 
 export const upload = async (formData: FormData) => {
   const token = await getToken();
-  // if (token === undefined) {
-  //   return 'Erreur token';
-  // }
   const res = await uploadOneImage(formData, token as string);
   const filename = res.data;
   formData.delete('file');
@@ -55,9 +52,6 @@ export const addNailService = async (
   nailService: CreateOrEditNailServiceProps
 ) => {
   const token = await getToken();
-  // if (token === undefined) {
-  //   return 'Erreur token';
-  // }
   const res = await createNailService(nailService, token as string);
   revalidatePath('/admin');
   return res.data;

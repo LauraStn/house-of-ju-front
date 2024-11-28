@@ -59,7 +59,7 @@ const Header = (props: {userLogged: User}) => {
       >
         <Image
           src={'/images/logojs.png'}
-          alt=''
+          alt='logo du site house of Ju'
           width={513}
           height={487}
           className='h-20 self-center ml-4 w-20 sticky z-40 md:static'

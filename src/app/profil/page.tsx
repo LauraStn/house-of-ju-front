@@ -80,7 +80,7 @@ export default async function Profil(props: ParamsProps) {
         <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-bittersweet'>
           <Image
             src={'/images/gallery-hands.webp'}
-            alt={''}
+            alt={'dessin de mains manucurées'}
             width={653}
             height={382}
             className='w-52'
@@ -112,7 +112,7 @@ export default async function Profil(props: ParamsProps) {
           </div>
         </div>
         <div>
-          <h2 className='text-bittersweet font-jimNightshade uppercase text-3xl pt-32 pb-10'>
+          <h2 className='text-bittersweet font-jimNightshade uppercase text-3xl pb-10'>
             mes informations
           </h2>
           {/* <Link

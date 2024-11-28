@@ -7,7 +7,7 @@ export default function MentionsLegales() {
         <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-melon'>
           <Image
             src={'/images/paper-pen.webp'}
-            alt={''}
+            alt={'dessin de stylo et papier'}
             width={352}
             height={302}
             className='w-32'

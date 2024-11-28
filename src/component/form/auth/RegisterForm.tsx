@@ -81,7 +81,7 @@ const RegisterForm = () => {
       <div>
         <Image
           src={'/images/registLogin.webp'}
-          alt={''}
+          alt={'photo de bureau avec clavier bloc notes et stylo'}
           width={2000}
           height={669}
         />

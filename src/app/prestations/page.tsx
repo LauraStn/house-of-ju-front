@@ -40,7 +40,7 @@ export default function Services() {
         <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-melon'>
           <Image
             src={'/images/main5.webp'}
-            alt={''}
+            alt={'dessin de main tenant un vernis à ongles'}
             width={352}
             height={302}
             className='w-32'

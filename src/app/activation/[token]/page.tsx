@@ -13,7 +13,7 @@ export default async function Activation({params}: {params: {token: string}}) {
       <div>
         <Image
           src={'/images/account4.jpg'}
-          alt={''}
+          alt={'photos de mains manucurées'}
           width={2000}
           height={669}
           className=''

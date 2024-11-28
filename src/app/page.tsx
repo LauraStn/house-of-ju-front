@@ -22,7 +22,7 @@ export default function Home() {
           alt={'dessin de deux mains'}
           width={400}
           height={200}
-          className='self-center '
+          className='self-center'
         />
         <h2 className='text-mona-lisa font-laBelleAurore text-4xl text-center'>
           House of Ju - Beauté des ongles
@@ -77,7 +77,7 @@ export default function Home() {
         </div>
         <Image
           src={'/images/hands2.png'}
-          alt={''}
+          alt={'photos de mains'}
           width={300}
           height={300}
           className='my-24'

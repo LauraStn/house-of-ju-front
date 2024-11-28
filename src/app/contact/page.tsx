@@ -8,7 +8,7 @@ export default function Contact() {
         <div className='bg-white bg-transparent self-center md:h-2/3 md:w-1/2 bg-opacity-75 md:self-center h-full gap-8 flex flex-col justify-center items-center border-double border-4 border-bittersweet'>
           <Image
             src={'/images/email-contact.webp'}
-            alt={''}
+            alt={'dessin enveloppe fleurie'}
             width={653}
             height={382}
             className='w-52'

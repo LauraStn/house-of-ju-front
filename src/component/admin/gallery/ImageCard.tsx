@@ -14,7 +14,7 @@ const ImageCard = (props: ImageGalleryProps & {pathName: string}) => {
       </Link>
       <Image
         src={`http://localhost:3003/download-image/view/${props.image_url}`}
-        alt={''}
+        alt={'photos de mains manucurées'}
         width={1200}
         height={2000}
         className='self-center max-w-32'
